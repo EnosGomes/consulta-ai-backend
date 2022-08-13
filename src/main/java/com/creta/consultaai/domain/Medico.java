@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Medico extends Usuario {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;  
 	
 	@JsonIgnore
@@ -29,7 +29,12 @@ public class Medico extends Usuario {
     
     public Medico() {}
 
-	public long getId() {
+	public Medico(@NotBlank(message = "CRM é obrigatório.") String crm) {
+		super();
+		this.crm = crm;
+	}
+
+	public Long getId() {
 		return id;
 	}
 
@@ -51,7 +56,7 @@ public class Medico extends Usuario {
 
 	public void setConsultas(Set<Consulta> consultas) {
 		this.consultas = consultas;
-	}
+	}		
 	
 	
 

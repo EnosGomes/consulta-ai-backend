@@ -15,10 +15,10 @@ import javax.validation.constraints.NotBlank;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Paciente {
+public class Paciente extends Usuario {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	//Gerar automatico com o nomeP ex: p1 ou p54
@@ -26,25 +26,21 @@ public class Paciente {
 	
 	@NotBlank(message = "Numero SUS é obrigatório.")
 	private String numeroSus;
+	
 	private String numeroCelular;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy="paciente",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="paciente", fetch=FetchType.EAGER)
 	private List<Consulta> consultas = new ArrayList<>();
-
-	// @Transient
-	// private Endereco endereco; //por enquanto somente um
 
 	public Paciente() {
 		super();
 	}
 
-	public Paciente(Long id, long codigoPaciente, String numeroSus, String numeroCelular) {
+	public Paciente(long codigoPaciente, String numeroSus) {
 		super();
-		this.id = id;
 		this.codigoPaciente = codigoPaciente;
 		this.numeroSus = numeroSus;
-		this.numeroCelular = numeroCelular;
 	}
 
 	public Long getId() {
@@ -83,8 +79,6 @@ public class Paciente {
 	public String toString() {
 		return "Paciente [id=" + id + ", codigoPaciente=" + codigoPaciente + ", numeroSus=" + numeroSus
 				+ ", numeroCelular=" + numeroCelular + ", consultas=" + consultas + "]";
-	}
-	
-	
+	}	
 
 }

@@ -4,7 +4,7 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class Endereco {
-
+	
 	private String numero;
 	private String rua;
 	private String cep;
@@ -13,6 +13,16 @@ public class Endereco {
 	private String complemento;
 
 	public Endereco() {
+	}
+	
+	public Endereco(String numero, String rua, String cep, String cidade, String estado, String complemento) {
+		super();
+		this.numero = numero;
+		this.rua = rua;
+		this.cep = cep;
+		this.cidade = cidade;
+		this.estado = estado;
+		this.complemento = complemento;
 	}
 
 	public String getNumero() {

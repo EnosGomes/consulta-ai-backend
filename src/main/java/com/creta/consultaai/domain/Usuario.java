@@ -8,8 +8,12 @@ import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -20,11 +24,11 @@ import org.hibernate.validator.constraints.br.CPF;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-//@Entity
+@Entity
 public abstract class Usuario {
 
-	// @Id
-	// @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	@NotBlank(message = "Nome é obrigatório.")
@@ -54,13 +58,13 @@ public abstract class Usuario {
 	@Embedded
 	private Endereco endereco;
 
-	// @ElementCollection(fetch=FetchType.EAGER)
-	// @CollectionTable(name="PERFIS")
-	// private Set<Integer> perfis = new HashSet<>();
+//	 @ElementCollection(fetch=FetchType.EAGER)
+//	 @CollectionTable(name="PERFIS")
+//	 private Set<Integer> perfis = new HashSet<>();
 
-	 @ElementCollection
-	 @CollectionTable(name="telefone")
-	 private Set<String> telefones;
+	@ElementCollection
+	@CollectionTable(name = "telefone")
+	private Set<String> telefones;
 
 	public Usuario() {
 	}
@@ -89,7 +93,7 @@ public abstract class Usuario {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -119,24 +123,7 @@ public abstract class Usuario {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(cpf);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Usuario other = (Usuario) obj;
-		return Objects.equals(cpf, other.cpf);
-	}
+	}	
 
 	public Endereco getEndereco() {
 		return endereco;
@@ -154,6 +141,21 @@ public abstract class Usuario {
 		this.telefones = telefones;
 	}
 	
-	
+	@Override
+	public int hashCode() {
+		return Objects.hash(cpf);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		return Objects.equals(cpf, other.cpf);
+	}
 
 }

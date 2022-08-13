@@ -17,7 +17,7 @@ import javax.validation.constraints.NotBlank;
 public class Consulta {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@NotBlank(message = "Nome é obrigatório.")
@@ -27,7 +27,7 @@ public class Consulta {
 	@JoinColumn(name="medico_id")
 	private Medico medico;
 	
-	@ManyToOne(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="paciente_id")
 	private Paciente paciente;
     
