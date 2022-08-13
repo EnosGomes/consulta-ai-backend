@@ -3,7 +3,9 @@ package com.creta.consultaai.domain;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,11 +23,11 @@ public class Consulta {
 	@NotBlank(message = "Nome é obrigatório.")
 	private String nome;
     
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="medico_id")
 	private Medico medico;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinColumn(name="paciente_id")
 	private Paciente paciente;
     
@@ -38,7 +40,6 @@ public class Consulta {
     private LocalDate novaDataConsulta; //pensar no historicos de varias agendamentos e cancelamentos de consultas
     
     public Consulta() {}
-	
 	
 	public LocalDate getDataConsulta() {
 		return dataConsulta;
@@ -88,12 +89,33 @@ public class Consulta {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+
+	public String getNome() {
+		return nome;
+	}
+
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
+
 	public Medico getMedico() {
 		return medico;
 	}
+
 	public void setMedico(Medico medico) {
 		this.medico = medico;
-	}
-	
+	}	
 
 }

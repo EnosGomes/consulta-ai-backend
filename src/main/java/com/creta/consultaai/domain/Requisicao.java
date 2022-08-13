@@ -1,8 +1,17 @@
 package com.creta.consultaai.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Requisicao {
-	private long id;
-	private Consulta consulta;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	
+	//private Consulta consulta;
 	private String statusRequisicao; //vai virar um enum ou algo do tipo
 	private boolean isAtiva;
 	private boolean isCancelada;
@@ -12,12 +21,6 @@ public class Requisicao {
 	}
 	public void setId(long id) {
 		this.id = id;
-	}
-	public Consulta getConsulta() {
-		return consulta;
-	}
-	public void setConsulta(Consulta consulta) {
-		this.consulta = consulta;
 	}
 	public String getStatusRequisicao() {
 		return statusRequisicao;

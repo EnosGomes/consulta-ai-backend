@@ -1,15 +1,12 @@
 package com.creta.consultaai.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
@@ -20,15 +17,11 @@ public class Medico extends Usuario {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-    
-	@ManyToOne
-	@JoinColumn(name="especialidade_id")
-	private Especialidade especialidade;
+	private Long id;  
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="medico")
-	private List<Consulta> consultas = new ArrayList<>();
+	private Set<Consulta> consultas;
 	
 	@NotBlank(message = "CRM é obrigatório.")
 	@Column(unique = true)
@@ -52,21 +45,14 @@ public class Medico extends Usuario {
 		this.crm = crm;
 	}
 
-	public Especialidade getEspecialidade() {
-		return especialidade;
-	}
-
-	public void setEspecialidade(Especialidade especialidade) {
-		this.especialidade = especialidade;
-	}
-
-	public List<Consulta> getConsultas() {
+	public Set<Consulta> getConsultas() {
 		return consultas;
 	}
 
-	public void setConsultas(List<Consulta> consultas) {
+	public void setConsultas(Set<Consulta> consultas) {
 		this.consultas = consultas;
 	}
 	
+	
 
-}
+} 

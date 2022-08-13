@@ -3,7 +3,9 @@ package com.creta.consultaai.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +20,8 @@ public class Paciente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
+	//Gerar automatico com o nomeP ex: p1 ou p54
 	private long codigoPaciente;
 	
 	@NotBlank(message = "Numero SUS é obrigatório.")
@@ -25,7 +29,7 @@ public class Paciente {
 	private String numeroCelular;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy="paciente")
+	@OneToMany(mappedBy="paciente",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
 	private List<Consulta> consultas = new ArrayList<>();
 
 	// @Transient
@@ -74,5 +78,13 @@ public class Paciente {
 	public void setNumeroCelular(String numeroCelular) {
 		this.numeroCelular = numeroCelular;
 	}
+
+	@Override
+	public String toString() {
+		return "Paciente [id=" + id + ", codigoPaciente=" + codigoPaciente + ", numeroSus=" + numeroSus
+				+ ", numeroCelular=" + numeroCelular + ", consultas=" + consultas + "]";
+	}
+	
+	
 
 }
