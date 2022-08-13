@@ -1,6 +1,6 @@
 package com.creta.consultaai.domain;
 
-public abstract class UnidadeSaude {
+public abstract class UnidadeSaude { //no futuro vai ser a mãe de Hospital, Clinica, Etc
 	
 	private long id;
 	private String nome;

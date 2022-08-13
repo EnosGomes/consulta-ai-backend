@@ -7,19 +7,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.creta.consultaai.domain.Consulta;
-import com.creta.consultaai.service.ConsultaService;
+import com.creta.consultaai.domain.Requisicao;
+import com.creta.consultaai.service.RequisicaoService;
 
 @RestController
-@RequestMapping(value = "/consultas")
-public class ConsultaController {
+@RequestMapping(value = "/requisicoes")
+public class RequisicaoController {
 
 	@Autowired
-	ConsultaService consultaService;
+	RequisicaoService requisicaoService;
 
 	@GetMapping(value = "/todos")
-	public List<Consulta> getAllConsultas() {
+	public List<Requisicao> getAllPacientes() {
 
-		return consultaService.retornaTodasConsultas();
+		return requisicaoService.retornaTodosRequisicoes();
 	}
+
 }

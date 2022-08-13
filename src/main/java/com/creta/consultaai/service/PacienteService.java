@@ -2,11 +2,13 @@ package com.creta.consultaai.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.creta.consultaai.domain.Paciente;
+import com.creta.consultaai.dto.PacienteDTO;
 import com.creta.consultaai.repository.PacienteRepository;
 
 @Service
@@ -18,6 +20,13 @@ public class PacienteService {
 	public List<Paciente> retornaTodosPacientes() {
 
 		List<Paciente> todosPacientes = pacienteRepository.findAll();
+		
+		//aqui usar o modelmapper
+		List<PacienteDTO> pacientesDto = todosPacientes
+				.stream()
+				.map(obj -> new PacienteDTO(obj))
+				.collect(Collectors.toList());
+		
 
 		if (todosPacientes.isEmpty()) {
 			System.out.println("empty");
@@ -27,7 +36,7 @@ public class PacienteService {
 		return todosPacientes;
 	}
 	
-	public Paciente retornaBuscaPorIdPacientes(Long id){
+	public Paciente retornaPacientePorId(Long id){
 		
 		Optional<Paciente> todosPaciente = pacienteRepository.findById(id);
 		
