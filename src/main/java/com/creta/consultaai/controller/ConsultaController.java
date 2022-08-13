@@ -19,6 +19,9 @@ public class ConsultaController {
 
 	@GetMapping(value = "/todos")
 	public List<Consulta> getAllConsultas() {
+		
+		//if situacao de erro , retorna bad reques
+		// return caso feliz que ai não fica com o else do if e não fica feio
 
 		return consultaService.retornaTodasConsultas();
 	}

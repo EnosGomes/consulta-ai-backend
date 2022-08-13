@@ -16,6 +16,19 @@ public class Requisicao {
 	private boolean isAtiva;
 	private boolean isCancelada;
 	
+	//@Column(nullable = false) ou NotBlank ?
+	
+	
+	/*
+	@CreationTimestamp
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt; 
+    
+    * @UpdateTimestamp
+    @Column(name = "updated_at")
+    private  LocalDateTime updatedAt;
+    */
+	
 	public long getId() {
 		return id;
 	}

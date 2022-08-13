@@ -25,5 +25,11 @@ public class HospitalService {
 		
 		return todosHospitais;
 	}
+	
+	/*
+	 * Page<Beer> pagedResult = beerRepository.findAllByBeerNameIsLike("%" + beer.getBeerName() + "%", createPageRequest(0, 10, Sort.Direction.DESC, "beerName"));
+        List<Beer> beerList = pagedResult.getContent();
+	 * 
+	 * */
 
 }
