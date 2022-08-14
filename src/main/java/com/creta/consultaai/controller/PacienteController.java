@@ -15,7 +15,7 @@ import com.creta.consultaai.service.PacienteService;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping(value = "/pacientes")
+@RequestMapping(value = "${url.padrao}/pacientes")
 @Slf4j
 public class PacienteController {
 

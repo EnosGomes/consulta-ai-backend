@@ -19,11 +19,10 @@ import com.creta.consultaai.service.HospitalService;
 
 //@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping(value = "/hospitais") //api/v1/
-public class HospitalController {
+@RequestMapping("${url.padrao}/hospitais") 
+public class HospitalController {	
 	
-	
-	//@RequiredArgsConstructor ao inves que autowired
+	//@RequiredArgsConstructor ao inves que autowired pode ser
 
 	@Autowired
 	HospitalService hospitalService;

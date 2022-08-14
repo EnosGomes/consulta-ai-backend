@@ -12,7 +12,7 @@ import com.creta.consultaai.domain.Medico;
 import com.creta.consultaai.service.MedicoService;
 
 @RestController
-@RequestMapping(value = "/medicos")
+@RequestMapping(value = "${url.padrao}/medicos")
 public class MedicoController {
 
 	@Autowired

@@ -11,7 +11,7 @@ import com.creta.consultaai.domain.Consulta;
 import com.creta.consultaai.service.ConsultaService;
 
 @RestController
-@RequestMapping(value = "/consultas")
+@RequestMapping(value = "${url.padrao}/consultas")
 public class ConsultaController {
 
 	@Autowired

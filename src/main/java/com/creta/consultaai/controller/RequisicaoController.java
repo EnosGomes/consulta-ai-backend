@@ -11,7 +11,7 @@ import com.creta.consultaai.domain.Requisicao;
 import com.creta.consultaai.service.RequisicaoService;
 
 @RestController
-@RequestMapping(value = "/requisicoes")
+@RequestMapping(value = "${url.padrao}/requisicoes")
 public class RequisicaoController {
 
 	@Autowired
