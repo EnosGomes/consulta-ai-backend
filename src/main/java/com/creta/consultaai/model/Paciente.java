@@ -1,4 +1,4 @@
-package com.creta.consultaai.domain;
+package com.creta.consultaai.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +28,8 @@ public class Paciente extends Usuario {
 	private String numeroSus;
 	
 	private String numeroCelular;
+	
+	//Doenca 
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="paciente", fetch=FetchType.EAGER)

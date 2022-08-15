@@ -7,8 +7,8 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.creta.consultaai.domain.Paciente;
 import com.creta.consultaai.dto.PacienteDTO;
+import com.creta.consultaai.model.Paciente;
 import com.creta.consultaai.repository.PacienteRepository;
 
 @Service
@@ -44,7 +44,7 @@ public class PacienteService {
 			return todosPaciente.get();
 		}
 		
-		throw new RuntimeException("Não foi encontrado nenhum paciente com esse id.");
+		throw new RuntimeException("Não foi encontrado nenhum paciente com id = "+id);
 		
 	}
 

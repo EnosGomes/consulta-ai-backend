@@ -10,11 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import com.creta.consultaai.domain.Consulta;
-import com.creta.consultaai.domain.Endereco;
-import com.creta.consultaai.domain.EstadoCivil;
-import com.creta.consultaai.domain.Medico;
-import com.creta.consultaai.domain.Paciente;
+import com.creta.consultaai.model.Consulta;
+import com.creta.consultaai.model.Endereco;
+import com.creta.consultaai.model.EstadoCivil;
+import com.creta.consultaai.model.Medico;
+import com.creta.consultaai.model.Paciente;
 import com.creta.consultaai.repository.ConsultaRepository;
 import com.creta.consultaai.repository.MedicoRepository;
 import com.creta.consultaai.repository.PacienteRepository;

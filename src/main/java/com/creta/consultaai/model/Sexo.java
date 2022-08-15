@@ -1,4 +1,4 @@
-package com.creta.consultaai.domain;
+package com.creta.consultaai.model;
 
 public enum Sexo {
     MASCULINO("masculino"),

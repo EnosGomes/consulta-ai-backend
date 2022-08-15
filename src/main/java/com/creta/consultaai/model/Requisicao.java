@@ -1,4 +1,4 @@
-package com.creta.consultaai.domain;
+package com.creta.consultaai.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,22 +12,10 @@ public class Requisicao {
 	private Long id;
 	
 	//private Consulta consulta;
+	
 	private String statusRequisicao; //vai virar um enum ou algo do tipo
 	private boolean isAtiva;
-	private boolean isCancelada;
-	
-	//@Column(nullable = false) ou NotBlank ?
-	
-	
-	/*
-	@CreationTimestamp
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private LocalDateTime createdAt; 
-    
-    * @UpdateTimestamp
-    @Column(name = "updated_at")
-    private  LocalDateTime updatedAt;
-    */
+	private boolean isCancelada;	
 	
 	public long getId() {
 		return id;

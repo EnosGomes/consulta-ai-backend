@@ -1,4 +1,4 @@
-package com.creta.consultaai.domain;
+package com.creta.consultaai.model;
 
 public abstract class UnidadeSaude { //no futuro vai ser a mãe de Hospital, Clinica, Etc
 	

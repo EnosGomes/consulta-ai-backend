@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.creta.consultaai.domain.Consulta;
+import com.creta.consultaai.model.Consulta;
 import com.creta.consultaai.repository.ConsultaRepository;
 
 @Service

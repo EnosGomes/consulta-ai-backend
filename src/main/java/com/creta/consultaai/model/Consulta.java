@@ -1,9 +1,8 @@
-package com.creta.consultaai.domain;
+package com.creta.consultaai.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;

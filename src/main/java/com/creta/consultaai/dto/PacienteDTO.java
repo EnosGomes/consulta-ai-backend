@@ -3,8 +3,8 @@ package com.creta.consultaai.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.creta.consultaai.domain.Consulta;
-import com.creta.consultaai.domain.Paciente;
+import com.creta.consultaai.model.Consulta;
+import com.creta.consultaai.model.Paciente;
 
 public class PacienteDTO {	
 

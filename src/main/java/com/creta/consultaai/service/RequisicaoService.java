@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.creta.consultaai.domain.Requisicao;
+import com.creta.consultaai.model.Requisicao;
 import com.creta.consultaai.repository.RequisicaoRepository;
 
 @Service
