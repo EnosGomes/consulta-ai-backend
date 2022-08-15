@@ -20,7 +20,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.creta.consultaai.model.Hospital;
 import com.creta.consultaai.service.HospitalService;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("${url.padrao}/hospitais") 
 public class HospitalController {	
