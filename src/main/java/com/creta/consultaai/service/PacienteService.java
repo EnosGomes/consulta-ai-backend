@@ -47,5 +47,14 @@ public class PacienteService {
 		throw new RuntimeException("Não foi encontrado nenhum paciente com id = "+id);
 		
 	}
+	
+	public Paciente inserePaciente(Paciente paciente) {
+		
+		if(paciente == null) {
+			throw new RuntimeException("Paciente com erro ai mano!");
+		}
+		
+		return pacienteRepository.save(paciente);
+	}
 
 }

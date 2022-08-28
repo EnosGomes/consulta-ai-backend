@@ -19,7 +19,7 @@ public class Consulta {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank(message = "Nome é obrigatório.")
+	@NotBlank(message = "Nome da consulta é obrigatório.")
 	private String nome;
     
 	@ManyToOne(fetch=FetchType.EAGER)

@@ -13,7 +13,7 @@ import com.creta.consultaai.service.RequisicaoService;
 
 
 @RestController
-@RequestMapping(value = "${url.padrao}/requisicoes")
+@RequestMapping(value = "${urlpadrao}/requisicoes")
 public class RequisicaoController {
 
 	@Autowired

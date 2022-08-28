@@ -28,27 +28,25 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public abstract class Usuario {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@NotBlank(message = "Nome é obrigatório.")
 	private String nome;
 
 	@CPF(message = "CPF é obrigatório.")
-	@Column(unique = true)
 	private String cpf;
 
 	@NotNull(message = "Data de Nascimento é obrigatória")
 	@Past
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataNascimento;
-
-	@Column(unique = true)
+	
 	@NotBlank(message = "Email é obrigatório.")
 	@Email
 	private String email;
 
-	@JsonIgnore
+	
 	@NotBlank(message = "Senha é obrigatória")
 	private String senha;
 

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.creta.consultaai.model.Consulta;
 import com.creta.consultaai.repository.ConsultaRepository;
 
-@Service
+@Service //fazer as interfaces e implementacoes
 public class ConsultaService {
 
 	@Autowired
@@ -24,6 +24,11 @@ public class ConsultaService {
 		} 
 		
 		return todasConsultas;
+	}
+	//pensar em um @transactional
+	public Consulta cadastraConsulta(Consulta consulta) {
+		
+		return consultaRepository.save(consulta);
 	}
 
 }
