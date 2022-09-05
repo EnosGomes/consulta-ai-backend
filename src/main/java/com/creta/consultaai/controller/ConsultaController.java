@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,37 +15,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.creta.consultaai.exception.HospitalNotFoundException;
+import com.creta.consultaai.exception.ConsultaNotFoundException;
 import com.creta.consultaai.model.Consulta;
-import com.creta.consultaai.service.ConsultaService;
+import com.creta.consultaai.service.impl.ConsultaServiceImpl;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping(value = "${urlpadrao}/consultas")
+@RequestMapping(value = "/consultas")
 public class ConsultaController {
 
 	@Autowired
-	ConsultaService consultaService;
+	ConsultaServiceImpl consultaService;
 
 	@GetMapping(value = "/todos")
-	public List<Consulta> getAllConsultas() {
-		
-		//if situacao de erro , retorna bad reques
-		// return caso feliz que ai não fica com o else do if e não fica feio
+	public List<Consulta> getAllConsultas() throws ConsultaNotFoundException{
 
 		return consultaService.retornaTodasConsultas();
 	}
-	
+
 	@PostMapping
 	public ResponseEntity<Consulta> insereConsulta(@Valid @RequestBody Consulta consulta) {
-		
+
 		consultaService.cadastraConsulta(consulta);
-		
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(consulta.getId())
-                .toUri();
-		
+
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(consulta.getId())
+				.toUri();
+
 		return ResponseEntity.created(location).build();
 	}
-	
+
 }

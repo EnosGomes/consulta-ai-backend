@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.creta.consultaai.model.Requisicao;
-import com.creta.consultaai.service.RequisicaoService;
+import com.creta.consultaai.service.impl.RequisicaoServiceImpl;
 
 
 @RestController
@@ -17,7 +17,7 @@ import com.creta.consultaai.service.RequisicaoService;
 public class RequisicaoController {
 
 	@Autowired
-	RequisicaoService requisicaoService;
+	RequisicaoServiceImpl requisicaoService;
 
 	@GetMapping(value = "/todos")
 	public List<Requisicao> getAllPacientes() {

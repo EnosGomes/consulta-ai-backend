@@ -7,8 +7,6 @@ import com.creta.consultaai.model.Consulta;
 import com.creta.consultaai.model.Paciente;
 
 public class PacienteDTO {	
-
-	private Long id;
 	
 	private long codigoPaciente;
 	private String numeroSus;	
@@ -18,18 +16,10 @@ public class PacienteDTO {
 	public PacienteDTO () {}
 	
 	public PacienteDTO(Paciente paciente) {
-		this.id = paciente.getId();
 		this.codigoPaciente = paciente.getCodigoPaciente();
-		this.numeroCelular = paciente.getNumeroCelular();
-		
+		this.numeroCelular = paciente.getNumeroCelular();		
 	}
 	
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
 	public long getCodigoPaciente() {
 		return codigoPaciente;
 	}
@@ -53,8 +43,6 @@ public class PacienteDTO {
 	}
 	public void setConsultas(List<Consulta> consultas) {
 		this.consultas = consultas;
-	}
-	
-	
+	}	
 
 }

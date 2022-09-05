@@ -2,33 +2,11 @@ package com.creta.consultaai.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.creta.consultaai.model.Consulta;
-import com.creta.consultaai.repository.ConsultaRepository;
 
-@Service //fazer as interfaces e implementacoes
-public class ConsultaService {
-
-	@Autowired
-	private ConsultaRepository consultaRepository;
-
-	public List<Consulta> retornaTodasConsultas() {
-
-		List<Consulta> todasConsultas = consultaRepository.findAll();
-
-		if (todasConsultas.isEmpty()) {
-			System.out.println("empty");
-			throw new RuntimeException("Não há consultas cadastrados");
-		} 
-		
-		return todasConsultas;
-	}
-	//pensar em um @transactional
-	public Consulta cadastraConsulta(Consulta consulta) {
-		
-		return consultaRepository.save(consulta);
-	}
+public interface ConsultaService {
+	
+	public List<Consulta> retornaTodasConsultas();
+	public Consulta cadastraConsulta(Consulta consulta);
 
 }

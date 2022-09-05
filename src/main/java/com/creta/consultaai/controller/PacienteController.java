@@ -19,7 +19,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.creta.consultaai.model.Hospital;
 import com.creta.consultaai.model.Paciente;
-import com.creta.consultaai.service.PacienteService;
+import com.creta.consultaai.service.impl.PacienteServiceImpl;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,7 +31,7 @@ public class PacienteController {
 	private static final Logger logger = LoggerFactory.getLogger(HospitalController.class);
 
 	@Autowired
-	PacienteService pacienteService;
+	PacienteServiceImpl pacienteService;
 
 	@GetMapping(value = "/todos")
 	public ResponseEntity<List<Paciente>> getAllPacientes() {

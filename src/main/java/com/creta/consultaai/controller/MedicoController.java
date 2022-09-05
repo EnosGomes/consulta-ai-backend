@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.creta.consultaai.model.Medico;
-import com.creta.consultaai.service.MedicoService;
+import com.creta.consultaai.service.impl.MedicoServiceImpl;
 
 @RestController
 @RequestMapping(value = "${urlpadrao}/medicos")
 public class MedicoController {
 
 	@Autowired
-	MedicoService medicoService;
+	MedicoServiceImpl medicoService;
 
 	@GetMapping(value = "/todos")
 	public List<Medico> getAllPacientes() {

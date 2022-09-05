@@ -1,11 +1,12 @@
 package com.creta.consultaai.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Set;
+import java.util.UUID;
 
 import javax.persistence.CollectionTable;
-import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -22,14 +23,14 @@ import javax.validation.constraints.Past;
 import org.hibernate.validator.constraints.br.CPF;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public abstract class Usuario {
+public abstract class Usuario implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private UUID id;
 
 	@NotBlank(message = "Nome é obrigatório.")
 	private String nome;
@@ -41,12 +42,11 @@ public abstract class Usuario {
 	@Past
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataNascimento;
-	
+
 	@NotBlank(message = "Email é obrigatório.")
 	@Email
 	private String email;
 
-	
 	@NotBlank(message = "Senha é obrigatória")
 	private String senha;
 
@@ -91,7 +91,7 @@ public abstract class Usuario {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public Long getId() {
+	public UUID getId() {
 		return id;
 	}
 
@@ -119,9 +119,9 @@ public abstract class Usuario {
 		this.estadoCivil = estadoCivil;
 	}
 
-	public void setId(Long id) {
+	public void setId(UUID id) {
 		this.id = id;
-	}	
+	}
 
 	public Endereco getEndereco() {
 		return endereco;
@@ -138,7 +138,7 @@ public abstract class Usuario {
 	public void setTelefones(Set<String> telefones) {
 		this.telefones = telefones;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(cpf);

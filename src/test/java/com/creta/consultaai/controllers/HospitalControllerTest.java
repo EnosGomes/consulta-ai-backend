@@ -13,7 +13,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
 import com.creta.consultaai.controller.HospitalController;
-import com.creta.consultaai.service.HospitalService;
+import com.creta.consultaai.service.impl.HospitalServiceImpl;
 
 @WebMvcTest(HospitalController.class)											// configurada
 @ActiveProfiles("dev")
@@ -23,7 +23,7 @@ public class HospitalControllerTest {
 	MockMvc mockMvc; // ajuda a testar os controllers subindo um servet container
 	
 	@MockBean
-	HospitalService hospitalService;
+	HospitalServiceImpl hospitalService;
 
 	@Test
 	public void deveRetornarTodosOsHospitais2() throws Exception {

@@ -22,7 +22,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.creta.consultaai.exception.HospitalNotFoundException;
 import com.creta.consultaai.model.Hospital;
-import com.creta.consultaai.service.HospitalService;
+import com.creta.consultaai.service.impl.HospitalServiceImpl;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -33,7 +33,7 @@ public class HospitalController {
 	private static final Logger logger = LoggerFactory.getLogger(HospitalController.class);
 
 	@Autowired
-	HospitalService hospitalService;
+	HospitalServiceImpl hospitalService;
 
 	@GetMapping(value = "/todos")
 	public List<Hospital> retorneTodosHospitais() throws HospitalNotFoundException {

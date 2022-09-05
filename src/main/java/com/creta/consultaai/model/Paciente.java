@@ -1,9 +1,10 @@
 package com.creta.consultaai.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -15,24 +16,25 @@ import javax.validation.constraints.NotBlank;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Paciente extends Usuario {
+public class Paciente extends Usuario implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	//Gerar automatico com o nomeP ex: p1 ou p54
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private UUID id;
+
+	// Gerar automatico com o nomeP ex: p1 ou p54
 	private long codigoPaciente;
-	
+
 	@NotBlank(message = "Numero SUS é obrigatório.")
 	private String numeroSus;
-	
+
 	private String numeroCelular;
-	
-	//Doenca 
-	
+
+	// Doenca
+
 	@JsonIgnore
-	@OneToMany(mappedBy="paciente", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "paciente", fetch = FetchType.EAGER)
 	private List<Consulta> consultas = new ArrayList<>();
 
 	public Paciente() {
@@ -45,12 +47,20 @@ public class Paciente extends Usuario {
 		this.numeroSus = numeroSus;
 	}
 
-	public Long getId() {
+	public UUID getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(UUID id) {
 		this.id = id;
+	}
+
+	public List<Consulta> getConsultas() {
+		return consultas;
+	}
+
+	public void setConsultas(List<Consulta> consultas) {
+		this.consultas = consultas;
 	}
 
 	public long getCodigoPaciente() {
@@ -81,6 +91,6 @@ public class Paciente extends Usuario {
 	public String toString() {
 		return "Paciente [id=" + id + ", codigoPaciente=" + codigoPaciente + ", numeroSus=" + numeroSus
 				+ ", numeroCelular=" + numeroCelular + ", consultas=" + consultas + "]";
-	}	
+	}
 
 }
