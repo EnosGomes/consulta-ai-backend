@@ -21,7 +21,7 @@ import com.creta.consultaai.service.impl.ConsultaServiceImpl;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping(value = "/consultas")
+@RequestMapping(value = "${urlpadrao}/consultas")
 public class ConsultaController {
 
 	@Autowired

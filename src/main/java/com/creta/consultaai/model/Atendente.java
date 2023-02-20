@@ -2,7 +2,6 @@ package com.creta.consultaai.model;
 
 import java.io.Serializable;
 import java.util.Objects;
-import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,19 +14,15 @@ public class Atendente extends Usuario implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private UUID id;
+	private Integer id;
 
 	private String nome;
 
 	public Atendente() {
 	}
 
-	public UUID getId() {
+	public Integer getId() {
 		return id;
-	}
-
-	public void setId(UUID id) {
-		this.id = id;
 	}
 
 	public String getNome() {

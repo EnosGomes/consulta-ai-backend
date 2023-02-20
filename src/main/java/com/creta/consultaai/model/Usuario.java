@@ -30,7 +30,7 @@ public abstract class Usuario implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private UUID id;
+	private Integer id;
 
 	@NotBlank(message = "Nome é obrigatório.")
 	private String nome;
@@ -91,7 +91,7 @@ public abstract class Usuario implements Serializable {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public UUID getId() {
+	public Integer getId() {
 		return id;
 	}
 
@@ -117,10 +117,6 @@ public abstract class Usuario implements Serializable {
 
 	public void setEstadoCivil(EstadoCivil estadoCivil) {
 		this.estadoCivil = estadoCivil;
-	}
-
-	public void setId(UUID id) {
-		this.id = id;
 	}
 
 	public Endereco getEndereco() {

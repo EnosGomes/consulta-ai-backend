@@ -2,18 +2,17 @@ package com.creta.consultaai.service.impl;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.creta.consultaai.dto.PacienteDTO;
+import com.creta.consultaai.exception.PacienteNotFoundException;
 import com.creta.consultaai.model.Paciente;
 import com.creta.consultaai.repository.PacienteRepository;
 import com.creta.consultaai.service.PacienteService;
 
 @Service
-public class PacienteServiceImpl implements PacienteService{
+public class PacienteServiceImpl implements PacienteService {
 
 	@Autowired
 	private PacienteRepository pacienteRepository;
@@ -21,41 +20,66 @@ public class PacienteServiceImpl implements PacienteService{
 	public List<Paciente> retornaTodosPacientes() {
 
 		List<Paciente> todosPacientes = pacienteRepository.findAll();
-		
-		//aqui usar o modelmapper
-		List<PacienteDTO> pacientesDto = todosPacientes
-				.stream()
-				.map(obj -> new PacienteDTO(obj))
-				.collect(Collectors.toList());
-		
-
 		if (todosPacientes.isEmpty()) {
-			System.out.println("empty");
-			throw new RuntimeException("Não há pacientes cadastrados");
-		} 
-		
+
+			throw new PacienteNotFoundException("Não há pacientes cadastrados");
+		}
+
 		return todosPacientes;
 	}
-	
-	public Paciente retornaPacientePorId(Long id){
-		
-		Optional<Paciente> todosPaciente = pacienteRepository.findById(id);
-		
-		if(todosPaciente.isPresent()) {
+
+	public Paciente buscaPacientePeloNome(String nome) {
+
+		try {
+
+			Optional<Paciente> todosPaciente = pacienteRepository.findByNome(nome);
 			return todosPaciente.get();
+
+		} catch (Exception e) {
+			throw new PacienteNotFoundException("Paciente não encontrado!");
 		}
-		
-		throw new RuntimeException("Não foi encontrado nenhum paciente com id = "+id);
-		
+
 	}
-	
+
 	public Paciente inserePaciente(Paciente paciente) {
-		
-		if(paciente == null) {
-			throw new RuntimeException("Paciente com erro ai mano!");
+
+		if (paciente == null) {
+			throw new PacienteNotFoundException("Erro na inserção do Paciente!");
 		}
-		
+
 		return pacienteRepository.save(paciente);
+	}
+
+	@Override
+	public Paciente alteraPaciente(Paciente paciente, Integer id) {
+
+		Optional<Paciente> buscaPaciente = pacienteRepository.findById(id);
+
+		if (buscaPaciente.isPresent()) {
+			buscaPaciente.get().setCodigoPaciente(paciente.getCodigoPaciente());
+			buscaPaciente.get().setDataNascimento(paciente.getDataNascimento());
+			buscaPaciente.get().setEmail(paciente.getCpf());
+			buscaPaciente.get().setEstadoCivil(paciente.getEstadoCivil());
+			buscaPaciente.get().setNumeroCelular(paciente.getCpf());
+			buscaPaciente.get().setSenha(paciente.getCpf());
+
+			return buscaPaciente.get();
+
+		} else {
+			throw new PacienteNotFoundException("Erro ao alterar o Paciente");
+		}
+
+	}
+
+	@Override
+	public void deletaPaciente(Integer id) {
+		Optional<Paciente> buscaPaciente = pacienteRepository.findById(id);
+
+		if (buscaPaciente.isPresent()) {
+			pacienteRepository.delete(buscaPaciente.get());
+		} else {
+			throw new PacienteNotFoundException("Erro ao deletar o Paciente");
+		}
 	}
 
 }

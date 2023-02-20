@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.creta.consultaai.model.Hospital;
 
 @Repository
-public interface HospitalRepository extends JpaRepository<Hospital, UUID> {
+public interface HospitalRepository extends JpaRepository<Hospital, Integer> {
 	
 	List<Hospital> findByNome(String nome);
 	List<Hospital> findByNomeLike(String nome);

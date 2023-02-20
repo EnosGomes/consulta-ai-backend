@@ -3,7 +3,6 @@ package com.creta.consultaai.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,7 +20,7 @@ public class Paciente extends Usuario implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private UUID id;
+	private Integer id;
 
 	// Gerar automatico com o nomeP ex: p1 ou p54
 	private long codigoPaciente;
@@ -47,12 +46,8 @@ public class Paciente extends Usuario implements Serializable {
 		this.numeroSus = numeroSus;
 	}
 
-	public UUID getId() {
+	public Integer getId() {
 		return id;
-	}
-
-	public void setId(UUID id) {
-		this.id = id;
 	}
 
 	public List<Consulta> getConsultas() {

@@ -26,7 +26,7 @@ import com.creta.consultaai.service.impl.HospitalServiceImpl;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/hospitais") 
+@RequestMapping("${urlpadrao}/hospitais") 
 //@RequiredArgsConstructor ao inves que autowired pode ser
 public class HospitalController {		
 	
@@ -39,16 +39,14 @@ public class HospitalController {
 	public List<Hospital> retorneTodosHospitais() throws HospitalNotFoundException {
 		List<Hospital> retornaTodosHospitais = hospitalService.retornaTodosHospitais();
 
-		return retornaTodosHospitais;
-		
+		return retornaTodosHospitais;		
 	}
 	
 	@GetMapping(value = "/id/{id}")
 	public Hospital retornaHospitalPorId(@PathVariable Integer id) throws HospitalNotFoundException{
 		Hospital retornaHospitalPorId = hospitalService.retornaHospitalPorId(id);
 
-		return retornaHospitalPorId;
-		
+		return retornaHospitalPorId;		
 	}
 	
 	@PostMapping
@@ -106,5 +104,4 @@ public class HospitalController {
 		
 		return ResponseEntity.ok(hospitaisAtivos);
 	}
-
 }
