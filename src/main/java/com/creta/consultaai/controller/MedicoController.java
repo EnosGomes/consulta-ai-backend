@@ -3,8 +3,8 @@ package com.creta.consultaai.controller;
 import java.net.URI;
 import java.util.List;
 
-import javax.validation.Valid;
 
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,9 +50,9 @@ public class MedicoController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Medico> cadastraPaciente(@Valid @RequestBody MedicoDTO medicoDTO) {
+	public ResponseEntity<Medico> cadastraMedico(@Valid @RequestBody Medico medicoDTO) {
 
-		medicoService.insereMedico(medicoMapper.toMedico(medicoDTO));
+		medicoService.insereMedico(medicoDTO);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("").buildAndExpand()
 				.toUri();
 		logger.info("Médico inserido com sucesso!");

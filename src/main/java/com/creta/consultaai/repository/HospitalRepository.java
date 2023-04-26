@@ -1,6 +1,7 @@
 package com.creta.consultaai.repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,4 +16,5 @@ public interface HospitalRepository extends JpaRepository<Hospital, Integer> {
 	List<Hospital> findByNomeLike(String nome);
 	List<Hospital> findByNomeContaining(String nome);
 	List<Hospital> findByAtivoTrue();
+	Optional<Hospital> findById(UUID id);
 }

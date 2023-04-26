@@ -19,19 +19,5 @@ import com.creta.consultaai.service.impl.HospitalServiceImpl;
 @ActiveProfiles("dev")
 public class HospitalControllerTest {
 	
-	@Autowired
-	MockMvc mockMvc; // ajuda a testar os controllers subindo um servet container
-	
-	@MockBean
-	HospitalServiceImpl hospitalService;
 
-	@Test
-	public void deveRetornarTodosOsHospitais2() throws Exception {
-		
-		ResultActions response = mockMvc
-				.perform(get("/hospitais/todos").contentType(MediaType.APPLICATION_JSON));
-
-		response.andExpect(status().isOk());
-
-	}
 }

@@ -3,13 +3,13 @@ package com.creta.consultaai.dto;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 
 import com.creta.consultaai.model.Consulta;
 import com.creta.consultaai.model.Paciente;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 
 public class PacienteDTO {
 

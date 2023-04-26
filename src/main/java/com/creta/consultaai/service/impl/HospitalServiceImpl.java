@@ -2,6 +2,7 @@ package com.creta.consultaai.service.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,7 +36,7 @@ public class HospitalServiceImpl implements HospitalService{
 		return hospitalRepository.save(hospitalCriado);
 	}
 	
-	public Hospital retornaHospitalPorId(Integer id) {
+	public Hospital retornaHospitalPorId(String id) {
 		Optional<Hospital> hospital = Optional.ofNullable(hospitalRepository.findAll().get(0));
 		if(!hospital.isPresent()) {
 			throw new HospitalNotFoundException("Nenhum hospital foi encontrado com esse Id.");
@@ -44,7 +45,7 @@ public class HospitalServiceImpl implements HospitalService{
 		return hospital.get();
 	}
 	
-	public Hospital atualizaHospitalPorId(Hospital hospital, Integer id) {
+	public Hospital atualizaHospitalPorId(Hospital hospital, String id) {
 		
 		Hospital hospitalBuscado = this.retornaHospitalPorId(id);
 		
@@ -83,9 +84,21 @@ public class HospitalServiceImpl implements HospitalService{
 		Optional<List<Hospital>> hospitaisAtivos = Optional.of(hospitalRepository.findByAtivoTrue());
 		
 		if(hospitaisAtivos.get().isEmpty()) {
-			throw new HospitalNotFoundException("Nenhum hospital ativo foi encontado.");
+			throw new HospitalNotFoundException("Nenhum hospital ativo foi encontrado.");
 		}
 		
 		return hospitaisAtivos.get();
+	}
+
+
+	public void excluirHospital(UUID id) {
+
+		Optional<Hospital> hospitalEncontrado =  hospitalRepository.findById(id);
+		if(hospitalEncontrado.isPresent()){
+			hospitalRepository.delete(hospitalEncontrado.get());
+		} else {
+			throw new HospitalNotFoundException("Nenhum hospital ativo foi encontrado.");
+		}
+
 	}
 }

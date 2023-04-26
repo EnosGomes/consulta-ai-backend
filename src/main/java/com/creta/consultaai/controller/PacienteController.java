@@ -3,8 +3,7 @@ package com.creta.consultaai.controller;
 import java.net.URI;
 import java.util.List;
 
-import javax.validation.Valid;
-
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +34,8 @@ public class PacienteController {
 
 	@Autowired
 	PacienteServiceImpl pacienteService;
+
+
 
 	@GetMapping(value = "/")
 	public ResponseEntity<List<Paciente>> getAllPacientes() {

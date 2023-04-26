@@ -6,16 +6,20 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Consulta implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -26,11 +30,13 @@ public class Consulta implements Serializable {
 	@NotBlank(message = "Nome da consulta é obrigatório.")
 	private String nome;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "medico_id")
 	private Medico medico;
-
-	@ManyToOne(fetch = FetchType.EAGER)
+	
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "paciente_id")
 	private Paciente paciente;
 
@@ -43,6 +49,10 @@ public class Consulta implements Serializable {
 	private LocalDate novaDataConsulta; // pensar no historicos de varias agendamentos e cancelamentos de consultas
 
 	public Consulta() {
+	}
+	
+	public Consulta(String nome) {
+		this.nome = nome;
 	}
 
 	public LocalDate getDataConsulta() {

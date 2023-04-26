@@ -6,7 +6,7 @@ import com.creta.consultaai.model.Requisicao;
 
 public interface RequisicaoService {
 	
-	public List<Requisicao> retornaTodosRequisicoes();
-	public Requisicao retornaRequisicaoPorId(Long id);
+	List<Requisicao> retornaTodosRequisicoes();
+	Requisicao retornaRequisicaoPorId(Long id);
 
 }

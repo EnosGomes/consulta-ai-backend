@@ -2,14 +2,16 @@ package com.creta.consultaai.controller;
 
 import java.net.URI;
 import java.util.List;
+import java.util.UUID;
 
-import javax.validation.Valid;
 
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,7 +45,7 @@ public class HospitalController {
 	}
 	
 	@GetMapping(value = "/id/{id}")
-	public Hospital retornaHospitalPorId(@PathVariable Integer id) throws HospitalNotFoundException{
+	public Hospital retornaHospitalPorId(@PathVariable String id) throws HospitalNotFoundException{
 		Hospital retornaHospitalPorId = hospitalService.retornaHospitalPorId(id);
 
 		return retornaHospitalPorId;		
@@ -63,7 +65,7 @@ public class HospitalController {
 	}
 	
 	@PutMapping(value = "/id/{id}")
-	public ResponseEntity<Hospital> atualizaHospital(@Valid @RequestBody Hospital hospital, @PathVariable Integer id){
+	public ResponseEntity<Hospital> atualizaHospital(@Valid @RequestBody Hospital hospital, @PathVariable String id){
 		
 		hospitalService.atualizaHospitalPorId(hospital, id);
 		
@@ -103,5 +105,13 @@ public class HospitalController {
 		}
 		
 		return ResponseEntity.ok(hospitaisAtivos);
+	}
+
+	@DeleteMapping(value = "/id/{id}")
+	public ResponseEntity<Void> excluirHospital(@PathVariable UUID id){
+
+		hospitalService.excluirHospital(id);
+
+		 return ResponseEntity.noContent().build();
 	}
 }
