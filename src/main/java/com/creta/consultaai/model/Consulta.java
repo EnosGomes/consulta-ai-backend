@@ -40,6 +40,8 @@ public class Consulta implements Serializable {
 	@JoinColumn(name = "paciente_id")
 	private Paciente paciente;
 
+	//Falar colocar o hospital
+
 	private LocalDate dataConsulta;
 	private LocalDateTime horaInicio;
 	private LocalDateTime horaFim;

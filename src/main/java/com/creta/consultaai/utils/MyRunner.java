@@ -60,44 +60,44 @@ public class MyRunner implements CommandLineRunner{
 		
 		//Criando um medico
 		
-		Endereco end2 = new Endereco("1","27","6505000","sao luis","Maranha","perto dali");
-		Set<String> telefonesPaciente2 = new HashSet<>();
-		telefonesPaciente2.add("5588");
-		
-		Paciente p2 = new Paciente();
-		p2.setNome("Enos Passarets");
-		p2.setCpf("60281084300");
-		p2.setDataNascimento(LocalDate.now().minusDays(120));
-		p2.setEmail("enos@enos.com");
-		p2.setSenha("123");
-		p2.setEndereco(end2);
-		p2.setEstadoCivil(EstadoCivil.CASADO);
-		p2.setCodigoPaciente(1l);
-		p2.setNumeroCelular("8899");
-		p2.setNumeroSus("1");
-		p2.setTelefones(telefonesPaciente2);
-		
-		pacienteRepository.save(p2);
-		
-		Medico m1 = new Medico();
-		m1.setNome("Sabrina Melo");
-		m1.setCpf("26901501315");
-		m1.setDataNascimento(LocalDate.now().minusDays(20));
-		m1.setEmail("sabrina@sabrina.com");
-		m1.setSenha("456");
-		m1.setEndereco(end2);
-		m1.setEstadoCivil(EstadoCivil.CASADO);
-		m1.setCrm("9999");
-		
-		medicoRepository.save(m1);		
-		
-		//Criando uma consulta
-		Consulta c1 = new Consulta();
-		c1.setNome("Consulta 1");
-		c1.setMedico(m1);
-		c1.setPaciente(p2);
-		
-		consultaRepository.save(c1); 
+//		Endereco end2 = new Endereco("1","27","6505000","sao luis","Maranha","perto dali");
+//		Set<String> telefonesPaciente2 = new HashSet<>();
+//		telefonesPaciente2.add("5588");
+//
+//		Paciente p2 = new Paciente();
+//		p2.setNome("Enos Passarets");
+//		p2.setCpf("60281084300");
+//		p2.setDataNascimento(LocalDate.now().minusDays(120));
+//		p2.setEmail("enos@enos.com");
+//		p2.setSenha("123");
+//		p2.setEndereco(end2);
+//		p2.setEstadoCivil(EstadoCivil.CASADO);
+//		p2.setCodigoPaciente(1l);
+//		p2.setNumeroCelular("8899");
+//		p2.setNumeroSus("1");
+//		p2.setTelefones(telefonesPaciente2);
+//
+//		pacienteRepository.save(p2);
+//
+//		Medico m1 = new Medico();
+//		m1.setNome("Sabrina Melo");
+//		m1.setCpf("26901501315");
+//		m1.setDataNascimento(LocalDate.now().minusDays(20));
+//		m1.setEmail("sabrina@sabrina.com");
+//		m1.setSenha("456");
+//		m1.setEndereco(end2);
+//		m1.setEstadoCivil(EstadoCivil.CASADO);
+//		m1.setCrm("9999");
+//
+//		medicoRepository.save(m1);
+//
+//		//Criando uma consulta
+//		Consulta c1 = new Consulta();
+//		c1.setNome("Consulta 1");
+//		c1.setMedico(m1);
+//		c1.setPaciente(p2);
+//
+//		consultaRepository.save(c1);
 		
     }
 

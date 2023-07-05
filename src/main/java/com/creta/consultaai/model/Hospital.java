@@ -32,6 +32,7 @@ public class Hospital implements Serializable {
 		super();
 		this.nome = nome;
 		this.ativo = true;
+		this.codigo = "HP001";
 	}	
 
 	public UUID getId() {

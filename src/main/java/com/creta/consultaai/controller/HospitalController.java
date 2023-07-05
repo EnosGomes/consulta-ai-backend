@@ -5,11 +5,14 @@ import java.util.List;
 import java.util.UUID;
 
 
+import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,6 +40,9 @@ public class HospitalController {
 	@Autowired
 	HospitalServiceImpl hospitalService;
 
+	@Autowired
+	private JavaMailSender mailSender;
+
 	@GetMapping(value = "/todos")
 	public List<Hospital> retorneTodosHospitais() throws HospitalNotFoundException {
 		List<Hospital> retornaTodosHospitais = hospitalService.retornaTodosHospitais();
@@ -45,14 +51,14 @@ public class HospitalController {
 	}
 	
 	@GetMapping(value = "/id/{id}")
-	public Hospital retornaHospitalPorId(@PathVariable String id) throws HospitalNotFoundException{
+	public Hospital retornaHospitalPorId(@PathVariable UUID id) throws HospitalNotFoundException{
 		Hospital retornaHospitalPorId = hospitalService.retornaHospitalPorId(id);
 
 		return retornaHospitalPorId;		
 	}
 	
 	@PostMapping
-	public ResponseEntity<Hospital> cadastraHospital(@Valid @RequestBody Hospital hospital){
+	public ResponseEntity<Hospital> cadastraHospital(@Valid @RequestBody Hospital hospital) throws MessagingException {
 		
 		hospitalService.insereHospital(hospital);
 		
@@ -65,7 +71,7 @@ public class HospitalController {
 	}
 	
 	@PutMapping(value = "/id/{id}")
-	public ResponseEntity<Hospital> atualizaHospital(@Valid @RequestBody Hospital hospital, @PathVariable String id){
+	public ResponseEntity<Hospital> atualizaHospital(@Valid @RequestBody Hospital hospital, @PathVariable UUID id){
 		
 		hospitalService.atualizaHospitalPorId(hospital, id);
 		
@@ -113,5 +119,25 @@ public class HospitalController {
 		hospitalService.excluirHospital(id);
 
 		 return ResponseEntity.noContent().build();
+	}
+
+
+	@PostMapping(value = "/email")
+	public String enviarEmail(){
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setTo("enoskizaru@gmail.com");
+		message.setFrom("enoskizaru@gmail.com");
+		message.setSubject("TESTE");
+		message.setText("A senha é :  teste");
+
+
+		try {
+			mailSender.send(message);
+			return "Email enviado com sucesso!";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "Erro ao enviar email.";
+		}
+
 	}
 }
