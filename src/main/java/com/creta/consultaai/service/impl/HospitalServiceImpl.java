@@ -51,14 +51,16 @@ public class HospitalServiceImpl implements HospitalService{
 
 		MimeMessage mensagem = mailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(mensagem, false, "utf-8");
+		String html = ""; //depois um builder
 
 		helper.setFrom("enoskizaru@gmail.com");
 		helper.setTo("enoskizaru@gmail.com");
 		helper.setSubject("Consulta Ai Sistemas");
-		mensagem.setContent("<h1>Enos html </h1>", "text/html");
+		html = "<h1>" + hospital.getNome() + "</h1>";
+		mensagem.setContent(html, "text/html");
 
 		try {
-			mailSender.send(mensagem);
+			//mailSender.send(mensagem);
 
 		} catch (Exception e) {
 			e.printStackTrace();
