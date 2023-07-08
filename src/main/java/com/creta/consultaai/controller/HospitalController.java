@@ -30,7 +30,7 @@ import com.creta.consultaai.service.impl.HospitalServiceImpl;
 import javax.mail.MessagingException;
 import javax.validation.Valid;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://front-mono-as2bpj4vj-enosgomes.vercel.app")
 @RestController
 @RequestMapping("${urlpadrao}/hospitais") 
 //@RequiredArgsConstructor ao inves que autowired pode ser

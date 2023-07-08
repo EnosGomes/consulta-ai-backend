@@ -27,7 +27,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.UUID;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://front-mono-as2bpj4vj-enosgomes.vercel.app")
 @RestController
 @RequestMapping("${urlpadrao}/alertas") 
 //@RequiredArgsConstructor ao inves que autowired pode ser
