@@ -5,10 +5,6 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
-
-
-import jakarta.mail.MessagingException;
-import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +26,9 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.creta.consultaai.exception.HospitalNotFoundException;
 import com.creta.consultaai.model.Hospital;
 import com.creta.consultaai.service.impl.HospitalServiceImpl;
+
+import javax.mail.MessagingException;
+import javax.validation.Valid;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController

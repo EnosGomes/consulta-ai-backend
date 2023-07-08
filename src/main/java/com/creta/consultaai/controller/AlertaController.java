@@ -3,8 +3,6 @@ package com.creta.consultaai.controller;
 import com.creta.consultaai.exception.AlertaNotFoundException;
 import com.creta.consultaai.model.Alerta;
 import com.creta.consultaai.service.impl.AlertaServiceImpl;
-import jakarta.mail.MessagingException;
-import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.mail.MessagingException;
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.UUID;

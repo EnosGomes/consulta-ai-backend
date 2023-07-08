@@ -5,9 +5,6 @@ import com.creta.consultaai.model.Alerta;
 import com.creta.consultaai.repository.AlertaRepository;
 import com.creta.consultaai.repository.AlertaRepository;
 import com.creta.consultaai.service.AlertaService;
-import com.creta.consultaai.service.AlertaService;
-import jakarta.mail.MessagingException;
-import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -38,7 +35,7 @@ public class AlertaServiceImpl implements AlertaService{
 		return alertasNaoNulos.get();
 	}
 	
-	public Alerta insereAlerta(Alerta alerta) throws MessagingException {
+	public Alerta insereAlerta(Alerta alerta) {
 		
 		Alerta alertaCriado = new Alerta(alerta.getNome());
 		alertaCriado.setDescricao(alerta.getDescricao());

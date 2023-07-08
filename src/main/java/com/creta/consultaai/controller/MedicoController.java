@@ -2,9 +2,6 @@ package com.creta.consultaai.controller;
 
 import java.net.URI;
 import java.util.List;
-
-
-import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +20,8 @@ import com.creta.consultaai.dto.MedicoDTO;
 import com.creta.consultaai.mapper.MedicoMapper;
 import com.creta.consultaai.model.Medico;
 import com.creta.consultaai.service.impl.MedicoServiceImpl;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value = "${urlpadrao}/medicos")

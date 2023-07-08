@@ -3,16 +3,8 @@ package com.creta.consultaai.service.impl;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-
-import jakarta.mail.MessagingException;
-import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -24,6 +16,9 @@ import com.creta.consultaai.exception.HospitalNotFoundException;
 import com.creta.consultaai.model.Hospital;
 import com.creta.consultaai.repository.HospitalRepository;
 import com.creta.consultaai.service.HospitalService;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 
 
 @Service

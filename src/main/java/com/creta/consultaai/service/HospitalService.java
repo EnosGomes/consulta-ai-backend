@@ -4,7 +4,8 @@ import java.util.List;
 import java.util.UUID;
 
 import com.creta.consultaai.model.Hospital;
-import jakarta.mail.MessagingException;
+
+import javax.mail.MessagingException;
 
 public interface HospitalService {
 	
