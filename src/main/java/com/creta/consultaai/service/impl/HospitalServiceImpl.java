@@ -3,6 +3,13 @@ package com.creta.consultaai.service.impl;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
@@ -22,6 +29,8 @@ import com.creta.consultaai.service.HospitalService;
 @Service
 public class HospitalServiceImpl implements HospitalService{
 
+	private static ExecutorService executorService = Executors.newFixedThreadPool(1);
+
 	@Autowired
 	private HospitalRepository hospitalRepository;
 
@@ -40,14 +49,18 @@ public class HospitalServiceImpl implements HospitalService{
 	}
 	
 	public Hospital insereHospital(Hospital hospital) throws MessagingException {
-		
-		Hospital hospitalCriado = new Hospital(hospital.getNome());
 
-//		SimpleMailMessage message = new SimpleMailMessage();
-//		message.setTo("enoskizaru@gmail.com");
-//		message.setFrom("enoskizaru@gmail.com");
-//		message.setSubject("Consulta Ai Sistemas");
-//		message.setText("<h1>Enos</h1>");
+		enviarEmailHospitalCadastrado(hospital);
+		Hospital hospitalCriado = new Hospital(hospital.getNome());
+		return hospitalRepository.save(hospitalCriado);
+	}
+
+	public void enviarEmailHospitalCadastrado(Hospital hospital) throws MessagingException {
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setTo("enoskizaru@gmail.com");
+		message.setFrom("enoskizaru@gmail.com");
+		message.setSubject("Consulta Ai Sistemas");
+		message.setText("<h1>Enos</h1>");
 
 		MimeMessage mensagem = mailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(mensagem, false, "utf-8");
@@ -60,14 +73,12 @@ public class HospitalServiceImpl implements HospitalService{
 		mensagem.setContent(html, "text/html");
 
 		try {
-			//mailSender.send(mensagem);
+			mailSender.send(mensagem);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new HospitalNotFoundException("Não foi possível enviar o email!");
 		}
-		
-		return hospitalRepository.save(hospitalCriado);
 	}
 
 	public Hospital retornaHospitalPorId(UUID id) {

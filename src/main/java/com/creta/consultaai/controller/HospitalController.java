@@ -3,6 +3,8 @@ package com.creta.consultaai.controller;
 import java.net.URI;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 
 import jakarta.mail.MessagingException;
@@ -58,7 +60,7 @@ public class HospitalController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Hospital> cadastraHospital(@Valid @RequestBody Hospital hospital) throws MessagingException {
+	public ResponseEntity<Hospital> cadastraHospital(@Valid @RequestBody Hospital hospital) throws MessagingException, ExecutionException, InterruptedException, TimeoutException {
 		
 		hospitalService.insereHospital(hospital);
 		
