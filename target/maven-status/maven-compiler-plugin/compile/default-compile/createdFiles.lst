@@ -34,7 +34,6 @@ com\creta\consultaai\exception\RestExceptionsHandler.class
 com\creta\consultaai\repository\RequisicaoRepository.class
 com\creta\consultaai\controller\HospitalController.class
 com\creta\consultaai\service\impl\HospitalServiceImpl.class
-com\creta\consultaai\config\DevSecurityConfigurations.class
 com\creta\consultaai\service\impl\RequisicaoServiceImpl.class
 com\creta\consultaai\model\Doenca.class
 com\creta\consultaai\model\Clinica.class

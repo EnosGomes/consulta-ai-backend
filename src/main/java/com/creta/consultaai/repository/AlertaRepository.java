@@ -1,7 +1,6 @@
 package com.creta.consultaai.repository;
 
 import com.creta.consultaai.model.Alerta;
-import com.creta.consultaai.model.Hospital;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
