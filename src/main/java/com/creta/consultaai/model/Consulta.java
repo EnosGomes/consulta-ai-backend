@@ -1,28 +1,25 @@
 package com.creta.consultaai.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.validation.constraints.NotBlank;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotBlank;
-
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Consulta implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class Consulta{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -43,19 +40,31 @@ public class Consulta implements Serializable {
 
 	//Falar colocar o hospital
 
+	private Boolean medicoAceitouConsulta;
+
+	private StatusConsulta statusConsulta; // enum com agendada, cancelada, esperando agendamento, concluida
+
 	private LocalDate dataConsulta;
 	private LocalDateTime horaInicio;
 	private LocalDateTime horaFim;
 	private String observacoes;
 	private boolean isCancelada;
-	private boolean isAgendada;
+	private boolean isAgendada; //so pode ser agendada, terminada ou cancelada
 	private LocalDate novaDataConsulta; // pensar no historicos de varias agendamentos e cancelamentos de consultas
 
 	public Consulta() {
 	}
-	
+
 	public Consulta(String nome) {
 		this.nome = nome;
+	}
+
+	public Consulta(String nome, Medico medico, Paciente paciente, Boolean medicoAceitouConsulta) {
+		this.nome = nome;
+		this.medico = medico;
+		this.paciente = paciente;
+		this.statusConsulta = StatusConsulta.PROCESSANDO;
+		this.medicoAceitouConsulta = medicoAceitouConsulta;
 	}
 
 	public LocalDate getDataConsulta() {
@@ -146,6 +155,22 @@ public class Consulta implements Serializable {
 		this.medico = medico;
 	}
 
+	public boolean isMedicoAceitouConsulta() {
+		return medicoAceitouConsulta;
+	}
+
+	public void setMedicoAceitouConsulta(Boolean medicoAceitouConsulta) {
+		this.medicoAceitouConsulta = medicoAceitouConsulta;
+	}
+
+	public StatusConsulta getStatusConsulta() {
+		return statusConsulta;
+	}
+
+	public void setStatusConsulta(StatusConsulta statusConsulta) {
+		this.statusConsulta = statusConsulta;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(nome);
@@ -162,7 +187,7 @@ public class Consulta implements Serializable {
 		Consulta other = (Consulta) obj;
 		return Objects.equals(nome, other.nome);
 	}
-	
-	
+
+
 
 }

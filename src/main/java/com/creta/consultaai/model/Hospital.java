@@ -1,11 +1,12 @@
 package com.creta.consultaai.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotBlank;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
@@ -25,14 +26,16 @@ public class Hospital implements Serializable {
 
 	private Boolean ativo;
 
+	//private Especialidades especialidades;
+
 	public Hospital() {
 	}
 
-	public Hospital(@NotBlank String nome) {
+	public Hospital(@NotBlank String nome, @NotBlank String codigo) {
 		super();
 		this.nome = nome;
 		this.ativo = true;
-		this.codigo = "HP001";
+		this.codigo =codigo;
 	}	
 
 	public UUID getId() {
@@ -74,6 +77,10 @@ public class Hospital implements Serializable {
 	@Override
 	public int hashCode() {
 		return Objects.hash(codigo, nome);
+	}
+
+	private String gerarCodigoHospital(){
+		return "hosp"+this.id.toString();
 	}
 
 	@Override

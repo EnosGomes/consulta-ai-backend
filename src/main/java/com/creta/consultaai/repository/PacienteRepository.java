@@ -9,7 +9,5 @@ import com.creta.consultaai.model.Paciente;
 
 @Repository
 public interface PacienteRepository extends JpaRepository<Paciente, Integer> {
-	
-	Optional<Paciente> findByNome(String nome);
 
 }

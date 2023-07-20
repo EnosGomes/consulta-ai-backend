@@ -28,18 +28,7 @@ public class PacienteServiceImpl implements PacienteService {
 		return todosPacientes;
 	}
 
-	public Paciente buscaPacientePeloNome(String nome) {
 
-		try {
-
-			Optional<Paciente> todosPaciente = pacienteRepository.findByNome(nome);
-			return todosPaciente.get();
-
-		} catch (Exception e) {
-			throw new PacienteNotFoundException("Paciente não encontrado!");
-		}
-
-	}
 
 	public Paciente inserePaciente(Paciente paciente) {
 

@@ -4,8 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 
-public abstract class UnidadeSaude implements Serializable {
-	private static final long serialVersionUID = 1L;
+public abstract class UnidadeSaude {
 
 	private UUID id;
 	private String nome;

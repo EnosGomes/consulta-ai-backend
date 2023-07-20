@@ -12,8 +12,6 @@ public interface AlertaService {
 	public Alerta insereAlerta(Alerta alerta) ;
 	public Alerta retornaAlertaPorId(UUID id);
 	public Alerta atualizaAlertaPorId(Alerta alerta, UUID id);
-	public List<Alerta> findAlertaByNome(String nome);
-	public List<Alerta> findAlertaContainingNome(String nome);
 	void excluirAlerta(UUID id);
 
 }

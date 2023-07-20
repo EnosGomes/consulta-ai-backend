@@ -1,24 +1,22 @@
 package com.creta.consultaai.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.validation.constraints.NotBlank;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.validation.constraints.NotBlank;
-
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Paciente extends Usuario implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class Paciente extends Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,8 +32,8 @@ public class Paciente extends Usuario implements Serializable {
 
 	// Doenca
 
-	@JsonIgnore
-	@OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
+	//@JsonIgnore
+	@OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<Consulta> consultas = new ArrayList<>();
 
 	public Paciente() {

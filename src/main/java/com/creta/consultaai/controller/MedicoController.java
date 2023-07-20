@@ -60,7 +60,7 @@ public class MedicoController {
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Medico> alteraPaciente(@Valid @RequestBody Medico medico, @PathVariable Integer id) {
+	public ResponseEntity<Medico> alteraMedico(@Valid @RequestBody Medico medico, @PathVariable Integer id) {
 
 		medicoService.alteraMedico(medico, id);
 		logger.info("Paciente alterado com sucesso!");
@@ -69,7 +69,7 @@ public class MedicoController {
 	}
 
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> deletaPaciente(@PathVariable Integer id) {
+	public ResponseEntity<Void> deletaMedico(@PathVariable Integer id) {
 
 		medicoService.deletaMedico(id);
 		logger.info("Paciente excluído com sucesso!");

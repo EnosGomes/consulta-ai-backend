@@ -1,23 +1,21 @@
 package com.creta.consultaai.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.validation.constraints.NotBlank;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import java.io.Serializable;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.validation.constraints.NotBlank;
-
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Medico extends Usuario implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class Medico extends Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,6 +28,13 @@ public class Medico extends Usuario implements Serializable {
 	@NotBlank(message = "CRM é obrigatório.")
 	@Column(unique = true)
 	private String crm; // precisa de mascara e validation
+
+	@NotBlank(message = "Especialidade é obrigatória.")
+	private String especialidade;
+
+	//@OneToMany
+	//List<Hospital> hospitais; // um medico trabalha em vários hospitais
+
 
 	public Medico() {
 	}
@@ -59,4 +64,11 @@ public class Medico extends Usuario implements Serializable {
 		this.consultas = consultas;
 	}
 
+	public String getEspecialidade() {
+		return especialidade;
+	}
+
+	public void setEspecialidade(String especialidade) {
+		this.especialidade = especialidade;
+	}
 }

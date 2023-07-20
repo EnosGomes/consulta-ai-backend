@@ -1,32 +1,27 @@
 package com.creta.consultaai.model;
 
-import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import org.hibernate.validator.constraints.br.CPF;
+
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Set;
 
-import org.hibernate.validator.constraints.br.CPF;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
-
-@Entity
-public abstract class Usuario implements Serializable {
-	private static final long serialVersionUID = 1L;
+public abstract class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -46,6 +41,7 @@ public abstract class Usuario implements Serializable {
 	@NotBlank(message = "Email é obrigatório.")
 	@Email
 	private String email;
+
 
 	@NotBlank(message = "Senha é obrigatória")
 	private String senha;
@@ -135,6 +131,7 @@ public abstract class Usuario implements Serializable {
 	public void setTelefones(Set<String> telefones) {
 		this.telefones = telefones;
 	}
+
 
 	@Override
 	public int hashCode() {

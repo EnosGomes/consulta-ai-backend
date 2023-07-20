@@ -11,10 +11,6 @@ import com.creta.consultaai.model.Hospital;
 
 @Repository
 public interface HospitalRepository extends JpaRepository<Hospital, Integer> {
-	
-	List<Hospital> findByNome(String nome);
-	List<Hospital> findByNomeLike(String nome);
-	List<Hospital> findByNomeContaining(String nome);
 	List<Hospital> findByAtivoTrue();
 	Optional<Hospital> findById(UUID id);
 }

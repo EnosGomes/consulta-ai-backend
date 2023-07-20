@@ -30,7 +30,8 @@ import com.creta.consultaai.service.impl.HospitalServiceImpl;
 import javax.mail.MessagingException;
 import javax.validation.Valid;
 
-@CrossOrigin(origins = "https://front-mono-as2bpj4vj-enosgomes.vercel.app")
+//@CrossOrigin(origins = "https://front-mono-as2bpj4vj-enosgomes.vercel.app")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("${urlpadrao}/hospitais") 
 //@RequiredArgsConstructor ao inves que autowired pode ser
@@ -81,26 +82,7 @@ public class HospitalController {
                                     .buildAndExpand(hospital.getId())
                                     .toUri();
         logger.info("Hospital editado com sucesso!");
-        return ResponseEntity.created(location).build(); //rest concepts
-	}
-	
-	@GetMapping(value = "/nome")
-	public ResponseEntity<List<Hospital>> retornaHospitalPorNome(@RequestParam String nome ){
-		
-		List<Hospital> hospitaisPorNome = hospitalService.findHospitalByNome(nome);
-		
-		return ResponseEntity.ok(hospitaisPorNome);
-	}
-	
-	@GetMapping(value = "/contem")
-	public ResponseEntity<List<Hospital>> retornaHospitalContemNome(@RequestParam String nome ){
-		
-		List<Hospital> hospitaisContendoNome = hospitalService.findHospitalContainingNome(nome);
-		if(hospitaisContendoNome == null || hospitaisContendoNome.isEmpty()) {
-			throw new RuntimeException("Não há hospitais contendo esse nome.");
-		}
-		
-		return ResponseEntity.ok(hospitaisContendoNome);
+        return ResponseEntity.noContent().build(); //rest concepts
 	}
 	
 	@GetMapping(value = "/ativos")
@@ -114,7 +96,7 @@ public class HospitalController {
 		return ResponseEntity.ok(hospitaisAtivos);
 	}
 
-	@DeleteMapping(value = "/id/{id}")
+	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> excluirHospital(@PathVariable UUID id){
 
 		hospitalService.excluirHospital(id);

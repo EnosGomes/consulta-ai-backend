@@ -1,16 +1,13 @@
 package com.creta.consultaai.dto;
 
-import java.time.LocalDate;
-
-
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CPF;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
+import java.time.LocalDate;
 
 public class MedicoDTO {
 	

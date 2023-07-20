@@ -27,7 +27,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.UUID;
 
-@CrossOrigin(origins = "https://front-mono-as2bpj4vj-enosgomes.vercel.app")
+//@CrossOrigin(origins = "https://front-mono-as2bpj4vj-enosgomes.vercel.app")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("${urlpadrao}/alertas") 
 //@RequiredArgsConstructor ao inves que autowired pode ser
@@ -79,25 +80,6 @@ public class AlertaController {
                                     .toUri();
         logger.info("Alerta editado com sucesso!");
         return ResponseEntity.created(location).build(); //rest concepts
-	}
-	
-	@GetMapping(value = "/nome")
-	public ResponseEntity<List<Alerta>> retornaAlertaPorNome(@RequestParam String nome) {
-		
-		List<Alerta> alertasPorNome = alertaService.findAlertaByNome(nome);
-		
-		return ResponseEntity.ok(alertasPorNome);
-	}
-	
-	@GetMapping(value = "/contem")
-	public ResponseEntity<List<Alerta>> retornaAlertaContemNome(@RequestParam String nome) {
-		
-		List<Alerta> alertasContendoNome = alertaService.findAlertaContainingNome(nome);
-		if(alertasContendoNome == null || alertasContendoNome.isEmpty()) {
-			throw new RuntimeException("Não há alertas contendo esse nome.");
-		}
-		
-		return ResponseEntity.ok(alertasContendoNome);
 	}
 
 	@DeleteMapping(value = "/id/{id}")

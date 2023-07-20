@@ -5,10 +5,11 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMailMessage;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,6 @@ import com.creta.consultaai.repository.HospitalRepository;
 import com.creta.consultaai.service.HospitalService;
 
 import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
 
 
 @Service
@@ -46,11 +46,11 @@ public class HospitalServiceImpl implements HospitalService{
 	public Hospital insereHospital(Hospital hospital) throws MessagingException {
 
 		//enviarEmailHospitalCadastrado(hospital);
-		Hospital hospitalCriado = new Hospital(hospital.getNome());
+		Hospital hospitalCriado = new Hospital(hospital.getNome(), hospital.getCodigo());
 		return hospitalRepository.save(hospitalCriado);
 	}
 
-	public void enviarEmailHospitalCadastrado(Hospital hospital) throws MessagingException {
+	public void enviarEmailHospitalCadastrado(Hospital hospital) throws MessagingException, jakarta.mail.MessagingException {
 		SimpleMailMessage message = new SimpleMailMessage();
 		message.setTo("enoskizaru@gmail.com");
 		message.setFrom("enoskizaru@gmail.com");
@@ -96,28 +96,6 @@ public class HospitalServiceImpl implements HospitalService{
 		hospitalBuscado.setNome(hospital.getNome());
 		hospitalBuscado.setAtivo(hospital.getAtivo());
 		return hospitalRepository.save(hospitalBuscado);
-	}
-	
-	public List<Hospital> findHospitalByNome(String nome) {
-		
-		Optional<List<Hospital>> hospitaisByNome = Optional.of(hospitalRepository.findByNome(nome));
-		
-		if(!hospitaisByNome.get().isEmpty()) {
-			throw new HospitalNotFoundException("Nenhum hospital foi encontrado com esse nome.");
-		}
-		
-		return hospitaisByNome.get();
-	}
-	
-	public List<Hospital> findHospitalContainingNome(String nome) {
-		
-		Optional<List<Hospital>> hospitaisContainingNome = Optional.of(hospitalRepository.findByNomeContaining(nome));
-		
-		if(!hospitaisContainingNome.get().isEmpty()) {
-			throw new HospitalNotFoundException("Nenhum hospital foi encontrado contendo esse nome");
-		}
-		
-		return hospitaisContainingNome.get();
 	}
 	
 	public List<Hospital> findHospitalAtivos() {

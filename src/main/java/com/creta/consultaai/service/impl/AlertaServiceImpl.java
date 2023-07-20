@@ -62,28 +62,6 @@ public class AlertaServiceImpl implements AlertaService{
 		alertaBuscado.setNome(alerta.getNome());
 		return alertaRepository.save(alertaBuscado);
 	}
-	
-	public List<Alerta> findAlertaByNome(String nome) {
-		
-		Optional<List<Alerta>> alertasByNome = Optional.of(alertaRepository.findByNome(nome));
-		
-		if(!alertasByNome.get().isEmpty()) {
-			throw new AlertaNotFoundException("Nenhum alerta foi encontrado com esse nome.");
-		}
-		
-		return alertasByNome.get();
-	}
-	
-	public List<Alerta> findAlertaContainingNome(String nome) {
-		
-		Optional<List<Alerta>> alertasContainingNome = Optional.of(alertaRepository.findByNomeContaining(nome));
-		
-		if(!alertasContainingNome.get().isEmpty()) {
-			throw new AlertaNotFoundException("Nenhum alerta foi encontrado contendo esse nome");
-		}
-		
-		return alertasContainingNome.get();
-	}
 
 
 	public void excluirAlerta(UUID id) {

@@ -10,9 +10,6 @@ import java.util.UUID;
 
 @Repository
 public interface AlertaRepository extends JpaRepository<Alerta, Integer> {
-	
-	List<Alerta> findByNome(String nome);
-	List<Alerta> findByNomeLike(String nome);
 	List<Alerta> findByNomeContaining(String nome);
 	Optional<Alerta> findById(UUID id);
 }

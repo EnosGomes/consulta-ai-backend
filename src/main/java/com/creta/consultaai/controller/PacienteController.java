@@ -45,12 +45,6 @@ public class PacienteController {
 		return ResponseEntity.ok(pacienteService.retornaTodosPacientes());
 	}
 
-	@GetMapping(value = "/nome")
-	public ResponseEntity<Paciente> getPacienteById(@RequestParam("nome") String nome) {
-
-		return ResponseEntity.ok(pacienteService.buscaPacientePeloNome(nome));
-	}
-
 	@PostMapping
 	public ResponseEntity<PacienteDTO> cadastraPaciente(@Valid @RequestBody PacienteDTO pacienteDTO) {
 		
