@@ -38,7 +38,7 @@ public class PacienteController {
 
 
 
-	@GetMapping(value = "/")
+	@GetMapping(value = "/todos")
 	public ResponseEntity<List<Paciente>> getAllPacientes() {
 		
 		//retorna uma lista de PacienteDTO
