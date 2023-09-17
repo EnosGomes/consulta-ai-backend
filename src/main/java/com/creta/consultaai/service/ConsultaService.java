@@ -13,9 +13,9 @@ public interface ConsultaService {
 
 	List<Consulta> retornaConsultasNaoAceitasMedico();
 
-	void deletaConsulta(UUID id);
+	void deletaConsulta(Integer id);
 
-	Optional<Consulta> findById(UUID id);
+	Optional<Consulta> findById(Integer id);
 
-	Consulta alteraConsulta(Consulta consulta, UUID id);
+	Consulta alteraConsulta(Consulta consulta, Integer id);
 }

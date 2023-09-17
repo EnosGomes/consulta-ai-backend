@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.creta.consultaai.model.Consulta;
 
 @Repository
-public interface ConsultaRepository extends JpaRepository<Consulta, UUID> {
+public interface ConsultaRepository extends JpaRepository<Consulta, Integer> {
 
     List<Consulta> findByMedicoAceitouConsultaTrue();
 

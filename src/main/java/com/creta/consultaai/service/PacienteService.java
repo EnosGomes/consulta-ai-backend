@@ -7,8 +7,7 @@ import com.creta.consultaai.model.Paciente;
 public interface PacienteService {
 	
 	public List<Paciente> retornaTodosPacientes();
-	public Paciente inserePaciente(Paciente paciente);	
-	public Paciente alteraPaciente(Paciente paciente, Integer id);
+	public Paciente inserePaciente(Paciente paciente);
 	public void deletaPaciente(Integer id);
 
 }

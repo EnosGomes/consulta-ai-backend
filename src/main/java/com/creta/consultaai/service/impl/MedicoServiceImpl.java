@@ -45,6 +45,10 @@ public class MedicoServiceImpl implements MedicoService {
 
 	@Override
 	public Medico alteraMedico(Medico medico, Integer id) {
+
+//		Post post = postRepository.findById(id)
+//				.orElseThrow(() -> new ResourceNotFoundException("Post", "id", id));
+
 		Optional<Medico> buscaMedico = medicoRepository.findById(id);
 
 		if (buscaMedico.isPresent()) {

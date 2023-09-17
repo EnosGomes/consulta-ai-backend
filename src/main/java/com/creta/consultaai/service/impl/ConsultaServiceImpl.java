@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import com.creta.consultaai.model.Paciente;
 import com.creta.consultaai.model.StatusConsulta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,17 +56,17 @@ public class ConsultaServiceImpl implements ConsultaService{
 	}
 
 	@Override
-	public void deletaConsulta(UUID id) {
+	public void deletaConsulta(Integer id) {
 		consultaRepository.delete(consultaRepository.findById(id).get());
 	}
 
 	@Override
-	public Optional<Consulta> findById(UUID id) {
+	public Optional<Consulta> findById(Integer id) {
 		return consultaRepository.findById(id);
 	}
 
 	@Override
-	public Consulta alteraConsulta(Consulta consulta, UUID id) {
+	public Consulta alteraConsulta(Consulta consulta, Integer id) {
 
 		Consulta consultaBuscada = this.findById(id).get();
 		if(consultaBuscada == null){
@@ -74,9 +75,16 @@ public class ConsultaServiceImpl implements ConsultaService{
 
 		consultaBuscada.setNome(consulta.getNome());
 		consultaBuscada.setStatusConsulta(StatusConsulta.AGENDADA);
-		consultaBuscada.setMedicoAceitouConsulta(consulta.isMedicoAceitouConsulta());
+		//consultaBuscada.setMedicoAceitouConsulta(consulta.isMedicoAceitouConsulta());
 
 		return consultaRepository.save(consultaBuscada);
+	}
+
+	public void associalPacienteNaConsulta(Integer idConsulta ,Integer idPaciente){
+		Consulta consultaEncontrada = consultaRepository.findById(idConsulta).get();
+		Paciente pacienteEncontrado = pacienteService.retornaPacientePorId(idPaciente);
+		consultaEncontrada.adicionaPacienteNaConsulta(pacienteEncontrado);
+
 	}
 
 }

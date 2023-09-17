@@ -2,7 +2,10 @@ package com.creta.consultaai.controller;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import com.creta.consultaai.exception.PacienteNotFoundException;
+import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +17,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.creta.consultaai.dto.PacienteDTO;
-import com.creta.consultaai.mapper.PacienteMapper;
 import com.creta.consultaai.model.Paciente;
 import com.creta.consultaai.service.impl.PacienteServiceImpl;
 
@@ -28,8 +29,8 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping(value = "${urlpadrao}/pacientes")
 public class PacienteController {
-
-	private PacienteMapper pacienteMapper;
+	@Autowired
+	private ModelMapper modelMapper;
 
 	private static final Logger logger = LoggerFactory.getLogger(HospitalController.class);
 
@@ -39,33 +40,31 @@ public class PacienteController {
 
 
 	@GetMapping(value = "/todos")
-	public ResponseEntity<List<Paciente>> getAllPacientes() {
+	public ResponseEntity<List<PacienteDTO>> getAllPacientes() {
+
+		return ResponseEntity.ok(
+				pacienteService.retornaTodosPacientes()
+						.stream()
+						.map(paciente -> modelMapper.map(paciente, PacienteDTO.class))
+						.collect(Collectors.toList())
+
+		);
 		
 		//retorna uma lista de PacienteDTO
-		return ResponseEntity.ok(pacienteService.retornaTodosPacientes());
+//		return ResponseEntity.ok(pacienteService.retornaTodosPacientes());
 	}
 
 	@PostMapping
 	public ResponseEntity<PacienteDTO> cadastraPaciente(@Valid @RequestBody PacienteDTO pacienteDTO) {
-		
-		Paciente paciente = PacienteMapper.toPaciente(pacienteDTO);
 
+		Paciente paciente = modelMapper.map(pacienteDTO, Paciente.class);
 		pacienteService.inserePaciente(paciente);
-		
+
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(pacienteDTO.getId()).toUri();
 		logger.info("Paciente inserido com sucesso!");
 
 		return ResponseEntity.created(location).build(); // rest concepts
-	}
-
-	@PutMapping(value = "/{id}")
-	public ResponseEntity<Paciente> alteraPaciente(@Valid @RequestBody Paciente paciente, @PathVariable Integer id) {
-
-		pacienteService.alteraPaciente(paciente, id);
-		logger.info("Paciente alterado com sucesso!");
-
-		return ResponseEntity.noContent().build(); // rest concepts
 	}
 
 	@DeleteMapping(value = "/{id}")

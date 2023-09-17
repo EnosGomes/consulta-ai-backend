@@ -3,6 +3,8 @@ package com.creta.consultaai.service.impl;
 import java.util.List;
 import java.util.Optional;
 
+import com.creta.consultaai.model.Consulta;
+import com.creta.consultaai.repository.ConsultaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,18 +19,16 @@ public class PacienteServiceImpl implements PacienteService {
 	@Autowired
 	private PacienteRepository pacienteRepository;
 
-	public List<Paciente> retornaTodosPacientes() {
+	@Autowired
+	private ConsultaRepository consultaRepository;
 
+	public List<Paciente> retornaTodosPacientes() {
 		List<Paciente> todosPacientes = pacienteRepository.findAll();
 		if (todosPacientes.isEmpty()) {
-
 			throw new PacienteNotFoundException("Não há pacientes cadastrados");
 		}
-
 		return todosPacientes;
 	}
-
-
 
 	public Paciente inserePaciente(Paciente paciente) {
 
@@ -37,27 +37,6 @@ public class PacienteServiceImpl implements PacienteService {
 		}
 
 		return pacienteRepository.save(paciente);
-	}
-
-	@Override
-	public Paciente alteraPaciente(Paciente paciente, Integer id) {
-
-		Optional<Paciente> buscaPaciente = pacienteRepository.findById(id);
-
-		if (buscaPaciente.isPresent()) {
-			buscaPaciente.get().setCodigoPaciente(paciente.getCodigoPaciente());
-			buscaPaciente.get().setDataNascimento(paciente.getDataNascimento());
-			buscaPaciente.get().setEmail(paciente.getCpf());
-			buscaPaciente.get().setEstadoCivil(paciente.getEstadoCivil());
-			buscaPaciente.get().setNumeroCelular(paciente.getCpf());
-			buscaPaciente.get().setSenha(paciente.getCpf());
-
-			return buscaPaciente.get();
-
-		} else {
-			throw new PacienteNotFoundException("Erro ao alterar o Paciente");
-		}
-
 	}
 
 	@Override
@@ -71,4 +50,7 @@ public class PacienteServiceImpl implements PacienteService {
 		}
 	}
 
+	public Paciente retornaPacientePorId(Integer id){
+		return pacienteRepository.findById(id).get();
+	}
 }

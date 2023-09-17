@@ -11,6 +11,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -19,11 +23,12 @@ import java.util.UUID;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Data
 public class Consulta{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private UUID id;
+	private Integer id;
 
 	@NotBlank(message = "Nome da consulta é obrigatório.")
 	private String nome;
@@ -35,7 +40,8 @@ public class Consulta{
 	
 	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "paciente_id")
+	@JoinColumn(name = "paciente_id", nullable = false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Paciente paciente;
 
 	//Falar colocar o hospital
@@ -67,109 +73,6 @@ public class Consulta{
 		this.medicoAceitouConsulta = medicoAceitouConsulta;
 	}
 
-	public LocalDate getDataConsulta() {
-		return dataConsulta;
-	}
-
-	public void setDataConsulta(LocalDate dataConsulta) {
-		this.dataConsulta = dataConsulta;
-	}
-
-	public LocalDateTime getHoraInicio() {
-		return horaInicio;
-	}
-
-	public void setHoraInicio(LocalDateTime horaInicio) {
-		this.horaInicio = horaInicio;
-	}
-
-	public LocalDateTime getHoraFim() {
-		return horaFim;
-	}
-
-	public void setHoraFim(LocalDateTime horaFim) {
-		this.horaFim = horaFim;
-	}
-
-	public String getObservacoes() {
-		return observacoes;
-	}
-
-	public void setObservacoes(String observacoes) {
-		this.observacoes = observacoes;
-	}
-
-	public boolean isCancelada() {
-		return isCancelada;
-	}
-
-	public void setCancelada(boolean isCancelada) {
-		this.isCancelada = isCancelada;
-	}
-
-	public boolean isAgendada() {
-		return isAgendada;
-	}
-
-	public void setAgendada(boolean isAgendada) {
-		this.isAgendada = isAgendada;
-	}
-
-	public LocalDate getNovaDataConsulta() {
-		return novaDataConsulta;
-	}
-
-	public void setNovaDataConsulta(LocalDate novaDataConsulta) {
-		this.novaDataConsulta = novaDataConsulta;
-	}
-
-	public UUID getId() {
-		return id;
-	}
-
-	public void setId(UUID id) {
-		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public Paciente getPaciente() {
-		return paciente;
-	}
-
-	public void setPaciente(Paciente paciente) {
-		this.paciente = paciente;
-	}
-
-	public Medico getMedico() {
-		return medico;
-	}
-
-	public void setMedico(Medico medico) {
-		this.medico = medico;
-	}
-
-	public boolean isMedicoAceitouConsulta() {
-		return medicoAceitouConsulta;
-	}
-
-	public void setMedicoAceitouConsulta(Boolean medicoAceitouConsulta) {
-		this.medicoAceitouConsulta = medicoAceitouConsulta;
-	}
-
-	public StatusConsulta getStatusConsulta() {
-		return statusConsulta;
-	}
-
-	public void setStatusConsulta(StatusConsulta statusConsulta) {
-		this.statusConsulta = statusConsulta;
-	}
 
 	@Override
 	public int hashCode() {
@@ -188,6 +91,8 @@ public class Consulta{
 		return Objects.equals(nome, other.nome);
 	}
 
-
+	public void adicionaPacienteNaConsulta(Paciente paciente){
+		this.paciente = paciente;
+	}
 
 }

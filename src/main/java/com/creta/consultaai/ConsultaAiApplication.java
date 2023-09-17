@@ -1,18 +1,18 @@
 package com.creta.consultaai;
 
-import com.creta.consultaai.model.ERole;
-import com.creta.consultaai.model.Role;
-import com.creta.consultaai.repository.RoleRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class ConsultaAiApplication implements CommandLineRunner {
 
-	@Autowired
-	RoleRepository roleRepository;
+	@Bean
+	public ModelMapper modelMapper() {
+		return new ModelMapper();
+	}
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ConsultaAiApplication.class, args);
@@ -20,9 +20,5 @@ public class ConsultaAiApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-
-		roleRepository.save(new Role(ERole.ROLE_ADMIN));
-		roleRepository.save(new Role(ERole.ROLE_MODERATOR));
-		roleRepository.save(new Role(ERole.ROLE_USER));
 	}
 }
