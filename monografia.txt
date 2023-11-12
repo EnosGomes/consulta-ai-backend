@@ -1,0 +1,39 @@
+Monografia Sistema - Consulta sem precisar ir presencial
+
+Cadastrar hospitais, consultas, usuarios e medicos.
+Eu cadastro um pedido de consulta , o medico quando
+tiver disponibilidade vai retornar com uma data agendada.
+
+Ou o usuário olha em um calendário as datas disponiveis
+horários que o médico está disponível
+
+Cadastra hospital? Sim, mas falta muito dados.
+Cadastra usuário? Não
+Cadastra Paciente? Não
+Cadastra Médico? Sim, mas falta muito dados
+Cadastra consulta? Não 
+Envia informações por email,
+como cadastrado efetuado, esqueci senha, 
+consulta confirmada, reagendada, etc? Não
+
+
+
+
+Quando tudo aqui estiver com a resposta "sim",
+o sistema está pronto para a monografia.
+
+-------------------
+
+O componente de consulta precisa de um calendar 
+para marcar a data do agendamento da consulta 
+
+Consulta só pode ser criada depois que o paciente for 
+criado porque vamos usar o id dele e so fazer um update
+
+Quem sabe um chat bot para conversar com o paciente
+e ele pedir informacoes como consultas marcadas
+
+Quem sabe um CI CD com o git para subir tudo direto
+na nuvem
+
+Analisar quais pacientes terão prioridade de consultas
