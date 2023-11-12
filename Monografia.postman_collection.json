@@ -1,0 +1,902 @@
+{
+	"info": {
+		"_postman_id": "3a497163-f345-4b17-a923-463202913bae",
+		"name": "Monografia",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14450255"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": []
+		},
+		{
+			"name": "Pacientes",
+			"item": [
+				{
+					"name": "Get Pacientes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/pacientes/todos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pacientes",
+								"todos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Paciente Por Nome",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/pacientes/nome/?nome=Enos Passarets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pacientes",
+								"nome",
+								""
+							],
+							"query": [
+								{
+									"key": "nome",
+									"value": "Enos Passarets"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Paciente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigoPaciente\":\"11\",\r\n    \"numeroSus\":\"11\",\r\n    \"numeroCelular\":\"11\",\r\n    \"nome\":\"Josafa\",\r\n    \"cpf\":\"60281084300\",\r\n    \"dataNascimento\":\"10/06/1992\",\r\n    \"email\":\"enos@enos.com\",\r\n    \"senha\":\"123\",\r\n    \"estadoCivil\":\"CASADO\",\r\n    \"telefone\":\"9988\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/pacientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pacientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar Paciente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigoPaciente\":\"11\",\r\n    \"numeroSus\":\"11\",\r\n    \"numeroCelular\":\"11\",\r\n    \"consultas\": {\r\n        \"\":\"\"\r\n    },\r\n    \"nome\":\"enos daciolo\",\r\n    \"cpf\":\"60281084300\",\r\n    \"dataNascimento\":\"10/06/1992\",\r\n    \"email\":\"enos@enos.com\",\r\n    \"senha\":\"123\",\r\n    \"estadoCivil\":\"CASADO\",\r\n    \"endereco\":{\r\n        \"\":\"\"\r\n    },\r\n    \"telefone\":\"9988\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/pacientes/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pacientes",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Associar Consulta",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigoPaciente\":\"11\",\r\n    \"numeroSus\":\"11\",\r\n    \"numeroCelular\":\"11\",\r\n    \"consultas\": {\r\n        \"\":\"\"\r\n    },\r\n    \"nome\":\"enos daciolo\",\r\n    \"cpf\":\"60281084300\",\r\n    \"dataNascimento\":\"10/06/1992\",\r\n    \"email\":\"enos@enos.com\",\r\n    \"senha\":\"123\",\r\n    \"estadoCivil\":\"CASADO\",\r\n    \"endereco\":{\r\n        \"\":\"\"\r\n    },\r\n    \"telefone\":\"9988\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/pacientes/8/consulta/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pacientes",
+								"8",
+								"consulta",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir Paciente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigoPaciente\":\"11\",\r\n    \"numeroSus\":\"11\",\r\n    \"numeroCelular\":\"11\",\r\n    \"consultas\": {\r\n        \"\":\"\"\r\n    },\r\n    \"nome\":\"enos\",\r\n    \"cpf\":\"60281084300\",\r\n    \"dataNascimento\":\"10/06/1992\",\r\n    \"email\":\"enos@enos.com\",\r\n    \"senha\":\"123\",\r\n    \"estadoCivil\":\"CASADO\",\r\n    \"endereco\":{\r\n        \"\":\"\"\r\n    },\r\n    \"telefone\":\"9988\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/pacientes/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pacientes",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Consultas",
+			"item": [
+				{
+					"name": "Get Consultas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/consultas/todos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"consultas",
+								"todos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Consultas em Espera",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/consultas/espera",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"consultas",
+								"espera"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Consulta",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/consultas/8f0c6e22-30a6-4a63-b29d-5e5c07fe873c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"consultas",
+								"8f0c6e22-30a6-4a63-b29d-5e5c07fe873c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Consulta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"consulta4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/consultas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"consultas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put Consulta",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"consulta1\",\r\n    \"medico\": {\r\n        \"id\": 1,\r\n        \"nome\": \"Doutor Estranho\",\r\n        \"cpf\": \"60281084300\",\r\n        \"dataNascimento\": \"10/06/1992\",\r\n        \"email\": \"doutor@estranho.com\",\r\n        \"senha\": \"123\",\r\n        \"estadoCivil\": null,\r\n        \"telefones\": [],\r\n        \"crm\": \"1\",\r\n        \"especialidade\": null\r\n    },\r\n    \"paciente\": {\r\n        \"id\": 1,\r\n        \"nome\": \"Josafa\",\r\n        \"cpf\": \"60281084300\",\r\n        \"dataNascimento\": \"10/06/1992\",\r\n        \"email\": \"enos@enos.com\",\r\n        \"senha\": \"123\",\r\n        \"estadoCivil\": null,\r\n        \"telefones\": [],\r\n        \"codigoPaciente\": 11,\r\n        \"numeroSus\": \"11\",\r\n        \"numeroCelular\": \"11\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/consultas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"consultas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Associa Paciente Consulta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"consulta1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/consultas/paciente/1/consulta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"consultas",
+								"paciente",
+								"1",
+								"consulta"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Médicos",
+			"item": [
+				{
+					"name": "Cadastra Medico",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\":\"Doutor Nao estranho\",\r\n    \"cpf\":\"60281084300\",\r\n    \"email\":\"doutor@estranho.com\",\r\n    \"senha\":\"123\",\r\n    \"dataNascimento\":\"10/06/1992\",\r\n    \"crm\":\"2\",\r\n    \"estadoCivil\":\"CASADO\",\r\n    \"especialidade\":\"cardiologista\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/medicos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"medicos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Medico",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\":\"Doutor Estranho\",\r\n    \"cpf\":\"60281084300\",\r\n    \"email\":\"doutor@estranho.com\",\r\n    \"senha\":\"123\",\r\n    \"dataNascimento\":\"10/06/1992\",\r\n    \"crm\":\"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/medicos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"medicos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hospitais",
+			"item": [
+				{
+					"name": "Get Hospitais",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/hospitais/todos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"hospitais",
+								"todos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Hospital",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/hospitais/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"hospitais",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Hospital By Id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\":\"daciolo jorge\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/hospitais/id/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hospitais",
+								"id",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Hospital",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \r\n    \"nome\":\"socorrao 2\",\r\n    \"codigo\":\"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/hospitais",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"hospitais"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Hospital Email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \r\n    \"nome\":\"socorrao 2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/hospitais/email",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"hospitais",
+								"email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Hospitais By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/hospitais/id/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hospitais",
+								"id",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Hospitais  By Nome",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/hospitais/nome?nome=asdad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"hospitais",
+								"nome"
+							],
+							"query": [
+								{
+									"key": "nome",
+									"value": "asdad"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Hospitais Containing Nome",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/hospitais/contem?nome=o",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hospitais",
+								"contem"
+							],
+							"query": [
+								{
+									"key": "nome",
+									"value": "o"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Hospitais Ativos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/hospitais/ativos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hospitais",
+								"ativos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Alertas",
+			"item": [
+				{
+					"name": "Get Alertas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/alertas/todos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"alertas",
+								"todos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Alerta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \r\n    \"nome\":\"alerta1\",\r\n    \"descricao\":\"Descricao1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/alertas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"alertas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Hospital",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/hospitais/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"hospitais",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Hospital By Id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\":\"daciolo jorge\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/hospitais/id/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hospitais",
+								"id",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Hospital Email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \r\n    \"nome\":\"socorrao 2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/hospitais/email",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"hospitais",
+								"email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Hospitais By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/hospitais/id/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hospitais",
+								"id",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Hospitais  By Nome",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/hospitais/nome?nome=asdad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"hospitais",
+								"nome"
+							],
+							"query": [
+								{
+									"key": "nome",
+									"value": "asdad"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Hospitais Containing Nome",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/hospitais/contem?nome=o",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hospitais",
+								"contem"
+							],
+							"query": [
+								{
+									"key": "nome",
+									"value": "o"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Hospitais Ativos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/hospitais/ativos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hospitais",
+								"ativos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Atendentes",
+			"item": []
+		}
+	]
+}
