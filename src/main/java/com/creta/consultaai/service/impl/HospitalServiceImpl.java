@@ -46,7 +46,7 @@ public class HospitalServiceImpl implements HospitalService{
 	public Hospital insereHospital(Hospital hospital) throws MessagingException {
 
 		//enviarEmailHospitalCadastrado(hospital);
-		Hospital hospitalCriado = new Hospital(hospital.getNome(), hospital.getCodigo());
+		Hospital hospitalCriado = new Hospital(hospital.getNome(), hospital.getCnes());
 		return hospitalRepository.save(hospitalCriado);
 	}
 

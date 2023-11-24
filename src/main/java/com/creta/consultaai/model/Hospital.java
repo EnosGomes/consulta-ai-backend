@@ -21,8 +21,16 @@ public class Hospital implements Serializable {
 
 	@NotBlank(message = "Nome do Hospital é obrigatório")
 	private String nome;
-	
-	private String codigo;
+
+	public String getCnes() {
+		return cnes;
+	}
+
+	public void setCnes(String cnes) {
+		this.cnes = cnes;
+	}
+
+	private String cnes;
 
 	private Boolean ativo;
 
@@ -35,7 +43,7 @@ public class Hospital implements Serializable {
 		super();
 		this.nome = nome;
 		this.ativo = true;
-		this.codigo =codigo;
+		this.cnes =codigo;
 	}	
 
 	public UUID getId() {
@@ -67,16 +75,16 @@ public class Hospital implements Serializable {
 	}
 
 	public String getCodigo() {
-		return codigo;
+		return cnes;
 	}
 
 	public void setCodigo(String codigo) {
-		this.codigo = codigo;
+		this.cnes = codigo;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(codigo, nome);
+		return Objects.hash(cnes, nome);
 	}
 
 	private String gerarCodigoHospital(){
@@ -92,7 +100,7 @@ public class Hospital implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Hospital other = (Hospital) obj;
-		return Objects.equals(codigo, other.codigo) && Objects.equals(nome, other.nome);
+		return Objects.equals(cnes, other.cnes) && Objects.equals(nome, other.nome);
 	}	
 
 }
