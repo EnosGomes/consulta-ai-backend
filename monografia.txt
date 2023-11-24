@@ -1,3 +1,39 @@
+Regras de Negócio
+
+Hospitais são Unidades de Saúde
+CNES -> Lugar onde os médicos e hospitais devem ser cadastrados. É obrigatório para toda a unidade de saúde.
+(Exemplo: Clinicas, Consultorios em geral, policlinicas, hospitais, fisio, etc)
+Medicos deveriam mandar documentação provando serem médicos credenciados e não são falsos.
+Junto do CNES deve se vincular os hospitais onde o médico trabalha.
+
+Para fazer cadastro no CNES primeiro deve se procurar um orgão gesto de saúde
+a nível municipal ou estadual, que ai vai exigir documentos como alvará de funcionamento
+da vigilância sanitária e da prefeitura.
+
+Unidades de Saúde ligadas ao SUS precisam ter mais informações que unidades pequenas.
+Planos de Saúde por exemplo exigem cadastro no CNES
+
+O SCNES é uma versão menor do CNES para unidades de saúde menores.
+
+--------------------------------------------------------------------------
+Mudanças:
+
+Hospitais devem se chamar Unidades de Saúde
+Talvez é uma boa consultar os dados dela no CNES: https://apidadosabertos.saude.gov.br/cnes/estabelecimentos/2308665
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Monografia Sistema - Consulta sem precisar ir presencial
 
 Cadastrar hospitais, consultas, usuarios e medicos.

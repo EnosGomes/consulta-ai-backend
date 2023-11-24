@@ -61,7 +61,7 @@ public class HospitalController {
 	
 	@PostMapping
 	public ResponseEntity<Hospital> cadastraHospital(@Valid @RequestBody Hospital hospital) throws MessagingException, ExecutionException, InterruptedException, TimeoutException {
-		
+		//Receber aqui um HospitalDTO e não um Hospital
 		hospitalService.insereHospital(hospital);
 		
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
