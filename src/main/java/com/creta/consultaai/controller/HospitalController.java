@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -31,7 +32,20 @@ import javax.mail.MessagingException;
 import javax.validation.Valid;
 
 //@CrossOrigin(origins = "https://front-mono-as2bpj4vj-enosgomes.vercel.app")
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(
+		origins = {
+				"http://localhost:4200",
+				"https://staging.example.com",
+				"https://app.example.com"
+		},
+		methods = {
+				RequestMethod.OPTIONS,
+				RequestMethod.GET,
+				RequestMethod.PUT,
+				RequestMethod.DELETE,
+				RequestMethod.POST
+		})
 @RestController
 @RequestMapping("${urlpadrao}/hospitais") 
 //@RequiredArgsConstructor ao inves que autowired pode ser
