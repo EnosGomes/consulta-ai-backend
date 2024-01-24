@@ -3,12 +3,8 @@ package com.creta.consultaai.service.impl;
 import com.creta.consultaai.exception.AlertaNotFoundException;
 import com.creta.consultaai.model.Alerta;
 import com.creta.consultaai.repository.AlertaRepository;
-import com.creta.consultaai.repository.AlertaRepository;
 import com.creta.consultaai.service.AlertaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,8 +18,8 @@ public class AlertaServiceImpl implements AlertaService{
 	@Autowired
 	private AlertaRepository alertaRepository;
 
-	@Autowired
-	private JavaMailSender mailSender;
+	//@Autowired
+	//private JavaMailSender mailSender;
 
 	public List<Alerta> retornaTodosAlertas() {
 		

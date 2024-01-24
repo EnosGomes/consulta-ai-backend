@@ -2,6 +2,7 @@ package com.creta.consultaai.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotBlank;
 
 import jakarta.persistence.Entity;
@@ -48,6 +49,7 @@ public class Consulta{
 
 	private Boolean medicoAceitouConsulta;
 
+	@Enumerated
 	private StatusConsulta statusConsulta; // enum com agendada, cancelada, esperando agendamento, concluida
 
 	private LocalDate dataConsulta;

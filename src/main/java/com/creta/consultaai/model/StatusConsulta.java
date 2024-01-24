@@ -1,8 +1,8 @@
 package com.creta.consultaai.model;
 
 public enum StatusConsulta {
-	AGENDADA("masculino"),
-	CANCELADA("feminino"),
+	AGENDADA("agendada"),
+	CANCELADA("cancelada"),
 	CONCLUIDA("concluida"),
 	PROCESSANDO("processando")
 	;
