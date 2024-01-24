@@ -67,6 +67,11 @@ na nuvem
 
 Analisar quais pacientes terão prioridade de consultas
 
+Fazer um menu de acordo com o perfil do usuarios
+Paciente so podem ver suas consultas e etc
+Admin podem ver tudo
+Medicos nao podem ver os pacientes ...e assim por diante
+
 
 
 

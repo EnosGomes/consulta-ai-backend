@@ -1,0 +1,4 @@
+Hospital CRUD -> Somente um Admin pode criar, desativar e alterar os dados de um hospital
+
+Create -> Criar uma form com os campos nomes, cnes
+Read -> Criar um tela mostrando o nome e status do hospital, aqui mostrar um botao para inativar e outro para alterar os dados
