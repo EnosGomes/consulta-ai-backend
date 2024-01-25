@@ -1,5 +1,9 @@
 Regras de Negócio
 
+Analisar se vale a pena fazer uma integracao com a API do CNES para buscar coisas de acordo com o numero do CNES
+se der certo, o admin so cadastra o numero do CNES
+
+
 Hospitais são Unidades de Saúde
 CNES -> Lugar onde os médicos e hospitais devem ser cadastrados. É obrigatório para toda a unidade de saúde.
 (Exemplo: Clinicas, Consultorios em geral, policlinicas, hospitais, fisio, etc)
@@ -20,6 +24,7 @@ Mudanças:
 
 Hospitais devem se chamar Unidades de Saúde
 Talvez é uma boa consultar os dados dela no CNES: https://apidadosabertos.saude.gov.br/cnes/estabelecimentos/2308665
+https://cnes.datasus.gov.br/pages/estabelecimentos/consulta.jsp
 
 --------------------------------------------------------------------
 Vindas do notepad++

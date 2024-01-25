@@ -3,9 +3,13 @@ Basico
 Hospital CRUD -> Somente um Admin pode criar, desativar e alterar os dados de um hospital
 
 Create -> Criar uma form com os campos nomes, cnes. No form deve ter uma verificacao de campo obrigatorio, vazio e nulo
-desativa o botao de salvar enquanto todos os requisitos para criar um novo hospital nao forem preenchidos
+Primeiro faz funcionar, mesmo que bem feio. So depois melhora o visual
+Validacao se hospital com o msm CNES ja existe
+desativar o botao de salvar enquanto todos os requisitos para criar um novo hospital nao forem preenchidos
+
 Read -> Criar um tela mostrando o nome e status do hospital, botao para alterar os dados
-Delete -> Botao para inativar o hospital
+Updatre -> Alterar verificando os campos obrigatorio e mesma regra para CNES ja existente
+Delete -> Botao para inativar o hospital, nao pode inativa um hospital que esteja sendo usado por alguma consulta
 
 ------------------------------------------------------------------------------------------------------------------------
 
